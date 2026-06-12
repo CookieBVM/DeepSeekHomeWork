@@ -1,0 +1,219 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|e:\\unityprojects\\unityprojects\\deepseek\\assets\\deepseek\\scripts\\digitalhuman\\controllers\\digitalhumangamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\controllers\\digitalhumangamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\deepseekchatwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\deepseekchatwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\views\\digitalhumanscenetransition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\views\\digitalhumanscenetransition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\views\\digitalhumanuiview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\views\\digitalhumanuiview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\scripts\\deepseekai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deepseekai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\services\\digitalhumanaiapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\services\\digitalhumanaiapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\services\\digitalhumandatasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\services\\digitalhumandatasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\models\\digitalhumanmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\models\\digitalhumanmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\scripts\\deepseekdatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deepseekdatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\controllers\\digitalhumandialoguecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\controllers\\digitalhumandialoguecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|E:\\UnityProjects\\UnityProjects\\DeepSeek\\assets\\deepseek\\scripts\\digitalhuman\\models\\digitalhumanthemeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA85225B-2A26-FA75-A68B-D7A8548427BC}|Assembly-CSharp.csproj|solutionrelative:assets\\deepseek\\scripts\\digitalhuman\\models\\digitalhumanthemeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DigitalHumanSceneTransition.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:54:29.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DigitalHumanUIView.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAwwFMAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:47:38.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DigitalHumanModels.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAAACkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:35:00.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DigitalHumanGameController.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:37:35.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DigitalHumanAIApiService.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAUwBAAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:29:29.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DigitalHumanThemeConfig.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAADwvw4AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:09:24.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DigitalHumanDialogueController.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwGEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T12:08:11.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DigitalHumanDataSyncService.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T11:45:07.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeepSeekChatWindow.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAC0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T08:32:40.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeepSeekDataModel.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\Scripts\\DeepSeekDataModel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DeepSeekDataModel.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\Scripts\\DeepSeekDataModel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DeepSeekDataModel.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T08:32:15.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeepSeekAI.cs",
+              "DocumentMoniker": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\Scripts\\DeepSeekAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DeepSeekAI.cs",
+              "ToolTip": "E:\\UnityProjects\\UnityProjects\\DeepSeek\\Assets\\Scripts\\DeepSeekAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DeepSeekAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T08:31:40.191Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1021,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

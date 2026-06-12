@@ -1,0 +1,6 @@
+E:\UnityProjects\UnityProjects\DeepSeek\Temp\bin\Debug\Assembly-CSharp.dll
+E:\UnityProjects\UnityProjects\DeepSeek\Temp\bin\Debug\Assembly-CSharp.pdb
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp.dll
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp.pdb

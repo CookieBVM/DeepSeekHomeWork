@@ -1,0 +1,8 @@
+E:\UnityProjects\UnityProjects\DeepSeek\Temp\bin\Debug\Assembly-CSharp-Editor.dll
+E:\UnityProjects\UnityProjects\DeepSeek\Temp\bin\Debug\Assembly-CSharp-Editor.pdb
+E:\UnityProjects\UnityProjects\DeepSeek\Temp\bin\Debug\Assembly-CSharp.pdb
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp-Editor.csproj.AssemblyReference.cache
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly.1F1299F3.Up2Date
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp-Editor.dll
+E:\UnityProjects\UnityProjects\DeepSeek\obj\Debug\Assembly-CSharp-Editor.pdb

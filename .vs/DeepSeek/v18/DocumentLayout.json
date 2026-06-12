@@ -1,0 +1,304 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DeepSeekAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekDataModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DeepSeekDataModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DigitalHumanGameController.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanGameController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T11:01:34.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DigitalHumanColoringController.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanColoringController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:52:16.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DigitalHumanInputHandler.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanInputHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:51:17.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DigitalHumanChatController.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanChatController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:46:55.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DigitalHumanEventBus.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Core\\DigitalHumanEventBus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:45:12.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DigitalHumanAvatarView.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanAvatarView.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAIwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:36:21.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DigitalHumanAIApiService.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAUwBAAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DigitalHumanThemeConfig.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanThemeConfig.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAADwvw4AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeepSeekAI.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DeepSeekAI.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DeepSeekAI.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeepSeekChatWindow.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DeepSeekChatWindow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DigitalHumanDataSyncService.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanDataSyncService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DigitalHumanModels.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Models\\DigitalHumanModels.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAAACkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DigitalHumanUIView.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanUIView.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAwwFMAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DigitalHumanSceneTransition.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Views\\DigitalHumanSceneTransition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DigitalHumanDialogueController.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Controllers\\DigitalHumanDialogueController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwGEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DeepSeekDataModel.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekDataModel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DeepSeekDataModel.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\Scripts\\DeepSeekDataModel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DeepSeekDataModel.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:47.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DigitalHumanAIApiService.cs",
+              "DocumentMoniker": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeDocumentMoniker": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ToolTip": "D:\\1\u4F5C\u4E1A\\\u4E8C\u7EA7\u9879\u76EE\\DeepSeek\\Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "RelativeToolTip": "Assets\\DeepSeek\\Scripts\\DigitalHuman\\Services\\DigitalHumanAIApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T10:32:45.599Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
