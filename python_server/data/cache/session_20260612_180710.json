@@ -1,0 +1,13 @@
+{
+  "session_id": "session_20260612_180710",
+  "events": [
+    {
+      "event_id": "evt_1781258837262_0",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "浜洪檯浜ゆ祦(涔拌彍)",
+        "scenario": "vegetable_market",
+        "participant": "瀛╁瓙",
+        "input_mode": "閫夐」閫夋嫨",
+        "input": "apple",
+        "response": 

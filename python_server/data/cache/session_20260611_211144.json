@@ -1,0 +1,38 @@
+{
+  "session_id": "session_20260611_211144",
+  "events": [
+    {
+      "event_id": "evt_1781183595187_0",
+      "event_type": "intent_detected",
+      "data": {
+        "text": "买苹果",
+        "intent": "buy_item",
+        "confidence": 0.95
+      },
+      "timestamp": 1781183595.187528,
+      "session_id": "session_20260611_211144",
+      "context": "buying_vegetables",
+      "correctness": "correct"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260611_211144",
+    "start_time": 1781183504.3537176,
+    "end_time": 1781183581.9553795,
+    "total_events": 1,
+    "correct_events": 1,
+    "wrong_events": 0,
+    "consecutive_correct": 1,
+    "max_consecutive_correct": 1,
+    "total_duration": 90.83381032943726,
+    "scene_stats": {
+      "buying_vegetables": {
+        "correct": 1,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781183595.187528
+}
