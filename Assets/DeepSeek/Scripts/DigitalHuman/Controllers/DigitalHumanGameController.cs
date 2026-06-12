@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace DeepSeek.DigitalHuman
@@ -72,6 +72,8 @@ namespace DeepSeek.DigitalHuman
 
         public void SwitchModule(DigitalHumanModule module)
         {
+            DigitalHumanEventBus.PublishModuleChanged(module);
+
             if (switchRoutine != null)
             {
                 StopCoroutine(switchRoutine);
@@ -105,10 +107,9 @@ namespace DeepSeek.DigitalHuman
                 }
             }
 
-            DigitalHumanEventBus.PublishModuleChanged(module);
-
             view.Initialize(theme);
             avatarView.BindViewport(view.AvatarViewport);
+            DigitalHumanEventBus.PublishCustomAnimation("Waving");
             currentModule = module;
             aiApiService.Configure(deepSeekApiKey, enableRemoteAi);
             chatController.Initialize(aiApiService);
@@ -204,6 +205,11 @@ namespace DeepSeek.DigitalHuman
             return child.AddComponent<T>();
         }
 
+        private void OnAvatarClicked()
+        {
+            DigitalHumanEventBus.PublishCustomAnimation("Waving");
+        }
+
         private void WireEvents()
         {
             view.ModuleRequested += SwitchModule;
@@ -214,7 +220,7 @@ namespace DeepSeek.DigitalHuman
             view.ColoringAreaSelected += inputHandler.SubmitColoringArea;
             view.ImitationPauseRequested += inputHandler.ToggleImitationPause;
             view.ImitationConfirmRequested += inputHandler.ConfirmImitation;
-            view.AvatarClicked += avatarView.PlayInteractiveGreeting;
+            view.AvatarClicked += OnAvatarClicked;
 
             inputHandler.ModuleRequested += SwitchModule;
             inputHandler.DifficultyRequested += SetDifficulty;
@@ -287,3 +293,4 @@ namespace DeepSeek.DigitalHuman
         }
     }
 }
+

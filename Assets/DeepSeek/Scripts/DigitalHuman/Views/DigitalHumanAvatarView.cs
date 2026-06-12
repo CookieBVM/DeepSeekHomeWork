@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -91,11 +91,13 @@ namespace DeepSeek.DigitalHuman
         private void OnEnable()
         {
             DigitalHumanEventBus.AvatarPoseRequested += ApplyPose;
+            DigitalHumanEventBus.AvatarCustomAnimationRequested += PlayCustomAnimation;
         }
 
         private void OnDisable()
         {
             DigitalHumanEventBus.AvatarPoseRequested -= ApplyPose;
+            DigitalHumanEventBus.AvatarCustomAnimationRequested -= PlayCustomAnimation;
         }
 
         private void OnDestroy()
@@ -119,19 +121,19 @@ namespace DeepSeek.DigitalHuman
                 externalAnimator.speed = animationSpeed;
             }
 
-            float breath = Mathf.Sin(Time.time * 1.15f * animationSpeed);
-            if (chest != null)
-            {
-                chest.localRotation = Quaternion.Euler(breath * 1.4f, 0f, 0f);
-            }
-
-            if (spine != null)
-            {
-                spine.localRotation = Quaternion.Euler(-breath * 0.75f, 0f, 0f);
-            }
-
             if (!blendingPose && HasPoseBones())
             {
+                float breath = Mathf.Sin(Time.time * 1.15f * animationSpeed);
+                if (chest != null)
+                {
+                    chest.localRotation = Quaternion.Euler(breath * 1.4f, 0f, 0f);
+                }
+
+                if (spine != null)
+                {
+                    spine.localRotation = Quaternion.Euler(-breath * 0.75f, 0f, 0f);
+                }
+
                 ApplyLoopingPoseMotion();
             }
 
@@ -152,10 +154,43 @@ namespace DeepSeek.DigitalHuman
             }
         }
 
+        public void SwitchToExternalAvatar(string resourcesPath)
+        {
+            if (string.IsNullOrWhiteSpace(resourcesPath))
+            {
+                Debug.LogWarning("[DigitalHumanAvatarView] SwitchToExternalAvatar: resourcesPath is empty.");
+                return;
+            }
+
+            resourcesAvatarPath = resourcesPath;
+            avatarPrefab = null;
+
+            if (usingExternalAvatar && externalAvatarInstance != null)
+            {
+                Destroy(externalAvatarInstance);
+                externalAvatarInstance = null;
+                externalAnimator = null;
+                usingExternalAvatar = false;
+                modelRoot = null;
+            }
+
+            if (sceneRoot != null)
+            {
+                Destroy(sceneRoot.gameObject);
+                sceneRoot = null;
+            }
+
+            EnsureAvatarScene();
+            if (viewport != null)
+            {
+                viewport.texture = renderTexture;
+            }
+        }
+
         public void PlayInteractiveGreeting()
         {
             ApplyPose(DigitalHumanAvatarPose.Greeting, DigitalHumanEmotion.Friendly);
-            DigitalHumanEventBus.PublishReward("我在这里陪你。", 1.2f);
+            DigitalHumanEventBus.PublishReward("我在这里陪你？", 1.2f);
         }
 
         public void SetAnimationSpeed(float speed)
@@ -291,6 +326,7 @@ namespace DeepSeek.DigitalHuman
 
         private void ApplyLoopingPoseMotion()
         {
+            if (!HasPoseBones()) return;
             float t = Time.time * animationSpeed;
             leftUpperArm.localRotation = leftUpperPoseRotation;
             leftLowerArm.localRotation = leftLowerPoseRotation;
@@ -334,6 +370,29 @@ namespace DeepSeek.DigitalHuman
                    head != null;
         }
 
+        public void PlayCustomAnimation(string animationName)
+        {
+            if (!usingExternalAvatar || externalAnimator == null || string.IsNullOrWhiteSpace(animationName))
+            {
+                return;
+            }
+
+            if (poseRoutine != null)
+            {
+                StopCoroutine(poseRoutine);
+                blendingPose = false;
+                poseRoutine = null;
+            }
+
+            try
+            {
+                externalAnimator.CrossFade(animationName, 0.2f);
+            }
+            catch
+            {
+                // State may not exist; that's acceptable
+            }
+        }
         private void PlayExternalAnimatorCue(DigitalHumanAvatarPose pose)
         {
             if (!usingExternalAvatar || externalAnimator == null || externalAnimator.runtimeAnimatorController == null)
@@ -343,6 +402,8 @@ namespace DeepSeek.DigitalHuman
 
             string poseName = pose.ToString();
             AnimatorControllerParameter[] parameters = externalAnimator.parameters;
+            bool triggered = false;
+
             for (int i = 0; i < parameters.Length; i++)
             {
                 AnimatorControllerParameter parameter = parameters[i];
@@ -355,6 +416,33 @@ namespace DeepSeek.DigitalHuman
                     string.Equals(parameter.name, "Action", System.StringComparison.OrdinalIgnoreCase))
                 {
                     externalAnimator.SetTrigger(parameter.name);
+                    triggered = true;
+                }
+            }
+
+            if (!triggered)
+            {
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    AnimatorControllerParameter parameter = parameters[i];
+                    if (parameter.type == AnimatorControllerParameterType.Bool &&
+                        string.Equals(parameter.name, poseName, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        externalAnimator.SetBool(parameter.name, true);
+                        triggered = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!triggered)
+            {
+                try
+                {
+                    externalAnimator.CrossFade(poseName, 0.15f);
+                }
+                catch
+                {
                 }
             }
         }
@@ -382,71 +470,12 @@ namespace DeepSeek.DigitalHuman
                 return;
             }
 
-            GameObject modelObject = new GameObject("SkinnedDigitalHuman");
-            modelObject.transform.SetParent(sceneRoot, false);
-            modelRoot = modelObject.transform;
-            modelRoot.localPosition = new Vector3(0f, -0.08f, 0f);
-            modelRoot.localRotation = Quaternion.identity;
-            modelRoot.localScale = Vector3.one;
-
-            CreateMaterials();
-            CreateSkeleton();
-            CreateSkinnedMesh();
-            CreateFaceAndHairDetails();
-
-            if (viewport != null)
-            {
-                viewport.texture = renderTexture;
-            }
-
-            ApplyPose(DigitalHumanAvatarPose.Greeting, DigitalHumanEmotion.Friendly);
+            Debug.LogError("[DigitalHumanAvatarView] No external avatar prefab found! " +
+                           "Place a Mixamo/FBX prefab at Resources/DigitalHuman/Avatar.prefab " +
+                           "or assign one to the avatarPrefab field in the Inspector.");
         }
 
-        private void CreateMaterials()
-        {
-            skinMaterial = CreateMaterial("DigitalHuman_Skin", new Color32(255, 222, 194, 255));
-            shirtMaterial = CreateMaterial("DigitalHuman_Shirt", new Color32(38, 170, 211, 255));
-            pantsMaterial = CreateMaterial("DigitalHuman_Pants", new Color32(52, 76, 116, 255));
-            hairMaterial = CreateMaterial("DigitalHuman_Hair", new Color32(255, 190, 63, 255));
-            shoeMaterial = CreateMaterial("DigitalHuman_Shoes", new Color32(42, 45, 54, 255));
-        }
 
-        private void CreateSkeleton()
-        {
-            bones.Clear();
-            hips = CreateBone("hips", modelRoot, new Vector3(0f, 0.78f, 0f));
-            spine = CreateBone("spine", hips, new Vector3(0f, 0.26f, 0f));
-            chest = CreateBone("chest", spine, new Vector3(0f, 0.30f, 0f));
-            neck = CreateBone("neck", chest, new Vector3(0f, 0.21f, 0f));
-            head = CreateBone("head", neck, new Vector3(0f, 0.18f, 0f));
-
-            leftUpperArm = CreateBone("left_upper_arm", chest, new Vector3(-0.38f, 0.02f, 0f));
-            leftLowerArm = CreateBone("left_lower_arm", leftUpperArm, new Vector3(-0.31f, -0.30f, 0f));
-            leftHand = CreateBone("left_hand", leftLowerArm, new Vector3(-0.04f, -0.31f, -0.01f));
-
-            rightUpperArm = CreateBone("right_upper_arm", chest, new Vector3(0.38f, 0.02f, 0f));
-            rightLowerArm = CreateBone("right_lower_arm", rightUpperArm, new Vector3(0.31f, -0.30f, 0f));
-            rightHand = CreateBone("right_hand", rightLowerArm, new Vector3(0.04f, -0.31f, -0.01f));
-
-            leftUpperLeg = CreateBone("left_upper_leg", hips, new Vector3(-0.14f, -0.08f, 0f));
-            leftLowerLeg = CreateBone("left_lower_leg", leftUpperLeg, new Vector3(0f, -0.44f, 0f));
-            leftFoot = CreateBone("left_foot", leftLowerLeg, new Vector3(0f, -0.39f, -0.08f));
-
-            rightUpperLeg = CreateBone("right_upper_leg", hips, new Vector3(0.14f, -0.08f, 0f));
-            rightLowerLeg = CreateBone("right_lower_leg", rightUpperLeg, new Vector3(0f, -0.44f, 0f));
-            rightFoot = CreateBone("right_foot", rightLowerLeg, new Vector3(0f, -0.39f, -0.08f));
-        }
-
-        private Transform CreateBone(string boneName, Transform parent, Vector3 localPosition)
-        {
-            Transform bone = new GameObject(boneName).transform;
-            bone.SetParent(parent, false);
-            bone.localPosition = localPosition;
-            bone.localRotation = Quaternion.identity;
-            bone.localScale = Vector3.one;
-            bones.Add(bone);
-            return bone;
-        }
 
         private bool TryLoadExternalAvatar()
         {
@@ -465,12 +494,169 @@ namespace DeepSeek.DigitalHuman
             externalAvatarInstance.name = "RuntimeDigitalHumanAvatar";
             modelRoot = externalAvatarInstance.transform;
             modelRoot.localPosition = externalAvatarLocalPosition;
-            modelRoot.localRotation = Quaternion.Euler(externalAvatarLocalEuler);
+            modelRoot.localRotation = Quaternion.Euler(externalAvatarLocalEuler) * Quaternion.Euler(0f, 180f, 0f);
             modelRoot.localScale = Vector3.one * Mathf.Max(0.01f, externalAvatarScale);
             externalAnimator = externalAvatarInstance.GetComponentInChildren<Animator>();
             BindExternalHumanoidBones();
+
+
+            EnsureExternalAvatarMaterials();
+
+            Bounds modelBounds = CalculateModelBounds();
+            if (modelBounds.extents.magnitude > 0.01f)
+            {
+                FrameCameraToModel(modelBounds);
+            }
+            else
+            {
+                Debug.LogWarning("[DigitalHumanAvatarView] Loaded external avatar has near-zero bounds. " +
+                                 "Camera will use default position. Make sure the model has visible " +
+                                 "mesh renderers with materials assigned.");
+            }
+
             usingExternalAvatar = true;
             return true;
+        }
+
+        private void EnsureExternalAvatarMaterials()
+        {
+            if (modelRoot == null) return;
+
+            // Find a suitable shader (try URP/LW first, fall back to Standard, then default)
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit")
+                       ?? Shader.Find("Standard")
+                       ?? Shader.Find("Legacy Shaders/Diffuse")
+                       ?? Shader.Find("Diffuse");
+            if (shader == null)
+            {
+                Debug.LogWarning("[DigitalHumanAvatarView] No shader found for auto materials.");
+                return;
+            }
+
+            System.Action<Renderer, Color> assignColor = (renderer, color) =>
+            {
+                Material mat = new Material(shader)
+                {
+                    name = "AutoMat_" + renderer.gameObject.name,
+                    color = color
+                };
+                if (mat.HasProperty("_Smoothness"))
+                    mat.SetFloat("_Smoothness", 0.35f);
+                renderer.sharedMaterial = mat;
+            };
+
+            MeshRenderer[] meshRenderers = modelRoot.GetComponentsInChildren<MeshRenderer>(true);
+            for (int i = 0; i < meshRenderers.Length; i++)
+            {
+                Material existing = meshRenderers[i].sharedMaterial;
+                if (existing != null && existing.mainTexture != null) continue;
+                Color color = PickBodyPartColor(meshRenderers[i].transform);
+                assignColor(meshRenderers[i], color);
+            }
+
+            SkinnedMeshRenderer[] skinnedRenderers = modelRoot.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            for (int i = 0; i < skinnedRenderers.Length; i++)
+            {
+                Material existing = skinnedRenderers[i].sharedMaterial;
+                if (existing != null && existing.mainTexture != null) continue;
+                Color color = PickBodyPartColor(skinnedRenderers[i].transform);
+                assignColor(skinnedRenderers[i], color);
+            }
+        }
+
+        private static Color PickBodyPartColor(Transform meshTransform)
+        {
+            Transform walker = meshTransform;
+            for (int depth = 0; walker != null && depth < 10; depth++)
+            {
+                string name = walker.name.ToLowerInvariant();
+                if (name.Contains("head") || name.Contains("neck"))
+                    return new Color32(255, 222, 194, 255);
+                if (name.Contains("hand"))
+                    return new Color32(255, 222, 194, 255);
+                if (name.Contains("upperarm") || name.Contains("lowerarm"))
+                    return new Color32(255, 222, 194, 255);
+                if (name.Contains("arm"))
+                    return new Color32(38, 170, 211, 255);
+                if (name.Contains("thigh") || name.Contains("upleg") || name.Contains("lowerleg"))
+                    return new Color32(82, 108, 152, 255);
+                if (name.Contains("leg"))
+                    return new Color32(82, 108, 152, 255);
+                if (name.Contains("foot"))
+                    return new Color32(42, 45, 54, 255);
+                if (name.Contains("spine") || name.Contains("chest") || name.Contains("hips"))
+                    return new Color32(38, 170, 211, 255);
+                if (name.Contains("mouth") || name.Contains("jaw"))
+                    return new Color32(200, 100, 100, 255);
+                if (name.Contains("eye"))
+                    return Color.white;
+                walker = walker.parent;
+            }
+            return new Color32(255, 222, 194, 255);
+        }
+
+        private Bounds CalculateModelBounds()
+        {
+            if (modelRoot == null)
+            {
+                return new Bounds(Vector3.zero, Vector3.zero);
+            }
+
+            Bounds bounds = new Bounds();
+            bool hasBounds = false;
+            Renderer[] renderers = modelRoot.GetComponentsInChildren<Renderer>();
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                if (!hasBounds)
+                {
+                    bounds = renderers[i].bounds;
+                    hasBounds = true;
+                }
+                else
+                {
+                    bounds.Encapsulate(renderers[i].bounds);
+                }
+            }
+
+            if (!hasBounds)
+            {
+                return new Bounds(modelRoot.position, Vector3.one * 0.5f);
+            }
+
+            return bounds;
+        }
+
+        private void FrameCameraToModel(Bounds modelBounds)
+        {
+            if (avatarCamera == null || sceneRoot == null)
+            {
+                return;
+            }
+
+            Vector3 center = modelBounds.center;
+            float size = Mathf.Max(modelBounds.extents.magnitude, 0.3f);
+            float fovRad = avatarCamera.fieldOfView * 0.5f * Mathf.Deg2Rad;
+            float distance = size / Mathf.Tan(fovRad) * 1.4f;
+            distance = Mathf.Clamp(distance, 0.5f, 8f);
+
+            Vector3 cameraPosition = new Vector3(0f, center.y * 0.5f + 0.15f, -distance);
+            avatarCamera.transform.localPosition = cameraPosition;
+            avatarCamera.transform.localRotation = Quaternion.LookRotation(
+                center - avatarCamera.transform.position,
+                Vector3.up
+            );
+
+            Transform keyLight = sceneRoot.Find("AvatarKeyLight");
+            if (keyLight != null)
+            {
+                keyLight.localPosition = new Vector3(-size * 0.6f, size * 1.2f + 0.5f, -distance * 0.5f);
+            }
+
+            Transform fillLight = sceneRoot.Find("AvatarFillLight");
+            if (fillLight != null)
+            {
+                fillLight.localPosition = new Vector3(size * 0.6f, size * 0.6f, -distance * 0.3f);
+            }
         }
 
         private void BindExternalHumanoidBones()
@@ -488,6 +674,7 @@ namespace DeepSeek.DigitalHuman
                 rightLowerArm = FindDeepChild(modelRoot, "rightlowerarm", "rightforearm", "r_forearm");
                 leftUpperLeg = FindDeepChild(modelRoot, "leftupperleg", "leftupleg", "l_thigh");
                 rightUpperLeg = FindDeepChild(modelRoot, "rightupperleg", "rightupleg", "r_thigh");
+                mouth = FindDeepChild(modelRoot, "mouth", "jaw", "openjaw");
                 return;
             }
 
@@ -508,6 +695,14 @@ namespace DeepSeek.DigitalHuman
             rightUpperLeg = externalAnimator.GetBoneTransform(HumanBodyBones.RightUpperLeg);
             rightLowerLeg = externalAnimator.GetBoneTransform(HumanBodyBones.RightLowerLeg);
             rightFoot = externalAnimator.GetBoneTransform(HumanBodyBones.RightFoot);
+            mouth = externalAnimator.GetBoneTransform(HumanBodyBones.Jaw);
+            if (mouth == null)
+            {
+                if (head != null)
+                {
+                    mouth = FindDeepChild(head, "mouth", "jaw", "openjaw");
+                }
+            }
         }
 
         private static Transform FindDeepChild(Transform root, params string[] keys)
@@ -544,405 +739,6 @@ namespace DeepSeek.DigitalHuman
                 ? string.Empty
                 : value.Replace("_", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).ToLowerInvariant();
         }
-
-        private void CreateSkinnedMesh()
-        {
-            vertices.Clear();
-            normals.Clear();
-            uvs.Clear();
-            boneWeights.Clear();
-            for (int i = 0; i < submeshTriangles.Length; i++)
-            {
-                submeshTriangles[i].Clear();
-            }
-
-            AddBodySurface();
-            AddTaperedTube(WorldOf(neck), WorldOf(head), 0.105f, 0.08f, 0.13f, 0.10f, IndexOf(neck), IndexOf(head), AvatarMaterial.Skin, 14, 1);
-            AddSphere(WorldOf(head) + new Vector3(0f, 0.15f, -0.015f), new Vector3(0.25f, 0.30f, 0.235f), IndexOf(head), AvatarMaterial.Skin, 18, 10, 0f, 1f);
-            AddSphere(WorldOf(head) + new Vector3(0f, 0.24f, 0.02f), new Vector3(0.275f, 0.205f, 0.255f), IndexOf(head), AvatarMaterial.Hair, 18, 8, 0f, 0.46f);
-
-            AddArm(leftUpperArm, leftLowerArm, leftHand, true);
-            AddArm(rightUpperArm, rightLowerArm, rightHand, false);
-            AddLeg(leftUpperLeg, leftLowerLeg, leftFoot);
-            AddLeg(rightUpperLeg, rightLowerLeg, rightFoot);
-
-            Mesh mesh = new Mesh
-            {
-                name = "ProceduralContinuousSkinnedDigitalHuman"
-            };
-            mesh.SetVertices(vertices);
-            mesh.SetNormals(normals);
-            mesh.SetUVs(0, uvs);
-            mesh.boneWeights = boneWeights.ToArray();
-            mesh.bindposes = CreateBindPoses();
-            mesh.subMeshCount = submeshTriangles.Length;
-            for (int i = 0; i < submeshTriangles.Length; i++)
-            {
-                mesh.SetTriangles(submeshTriangles[i], i);
-            }
-
-            mesh.RecalculateBounds();
-
-            skinnedMeshRenderer = modelRoot.gameObject.AddComponent<SkinnedMeshRenderer>();
-            skinnedMeshRenderer.sharedMesh = mesh;
-            skinnedMeshRenderer.bones = bones.ToArray();
-            skinnedMeshRenderer.rootBone = hips;
-            skinnedMeshRenderer.updateWhenOffscreen = true;
-            skinnedMeshRenderer.sharedMaterials = new[]
-            {
-                skinMaterial,
-                shirtMaterial,
-                pantsMaterial,
-                hairMaterial,
-                shoeMaterial
-            };
-            skinnedMeshRenderer.localBounds = new Bounds(new Vector3(0f, 0.9f, 0f), new Vector3(2.4f, 2.6f, 1.4f));
-        }
-
-        private void AddBodySurface()
-        {
-            Vector3[] centers =
-            {
-                WorldOf(hips) + new Vector3(0f, -0.08f, 0f),
-                WorldOf(hips) + new Vector3(0f, 0.05f, 0f),
-                WorldOf(spine) + new Vector3(0f, 0.02f, 0f),
-                WorldOf(chest) + new Vector3(0f, 0.02f, 0f),
-                WorldOf(neck) + new Vector3(0f, -0.06f, 0f)
-            };
-            float[] radiusX = { 0.20f, 0.25f, 0.29f, 0.32f, 0.14f };
-            float[] radiusZ = { 0.12f, 0.145f, 0.16f, 0.155f, 0.09f };
-            int[] ringBones = { IndexOf(hips), IndexOf(hips), IndexOf(spine), IndexOf(chest), IndexOf(neck) };
-            AddRingSurface(centers, radiusX, radiusZ, ringBones, AvatarMaterial.Shirt, 18);
-        }
-
-        private void AddArm(Transform upper, Transform lower, Transform hand, bool left)
-        {
-            Vector3 shoulder = WorldOf(upper);
-            Vector3 elbow = WorldOf(lower);
-            Vector3 wrist = WorldOf(hand);
-            Vector3 midUpper = Vector3.Lerp(shoulder, elbow, 0.45f);
-            Vector3 midLower = Vector3.Lerp(elbow, wrist, 0.52f);
-            AddRingSurface(
-                new[] { shoulder, midUpper, elbow, midLower, wrist },
-                new[] { 0.082f, 0.078f, 0.068f, 0.061f, 0.052f },
-                new[] { 0.074f, 0.070f, 0.062f, 0.055f, 0.048f },
-                new[] { IndexOf(upper), IndexOf(upper), IndexOf(lower), IndexOf(lower), IndexOf(hand) },
-                AvatarMaterial.Skin,
-                14);
-
-            Vector3 sleeveEnd = Vector3.Lerp(shoulder, elbow, 0.58f);
-            AddTaperedTube(shoulder, sleeveEnd, 0.095f, 0.085f, 0.087f, 0.078f, IndexOf(upper), IndexOf(upper), AvatarMaterial.Shirt, 14, 1);
-            AddSphere(wrist + new Vector3(left ? -0.02f : 0.02f, -0.045f, -0.01f), new Vector3(0.074f, 0.088f, 0.062f), IndexOf(hand), AvatarMaterial.Skin, 12, 7, 0f, 1f);
-        }
-
-        private void AddLeg(Transform upper, Transform lower, Transform foot)
-        {
-            Vector3 hip = WorldOf(upper);
-            Vector3 knee = WorldOf(lower);
-            Vector3 ankle = WorldOf(foot);
-            AddRingSurface(
-                new[] { hip, Vector3.Lerp(hip, knee, 0.48f), knee, Vector3.Lerp(knee, ankle, 0.55f), ankle },
-                new[] { 0.105f, 0.100f, 0.085f, 0.078f, 0.070f },
-                new[] { 0.090f, 0.086f, 0.078f, 0.070f, 0.064f },
-                new[] { IndexOf(upper), IndexOf(upper), IndexOf(lower), IndexOf(lower), IndexOf(foot) },
-                AvatarMaterial.Pants,
-                14);
-
-            AddTaperedTube(ankle + new Vector3(0f, 0.035f, 0.08f), ankle + new Vector3(0f, 0.035f, -0.18f), 0.078f, 0.052f, 0.12f, 0.058f, IndexOf(foot), IndexOf(foot), AvatarMaterial.Shoes, 14, 1);
-        }
-
-        private void AddRingSurface(
-            Vector3[] centers,
-            float[] radiusX,
-            float[] radiusZ,
-            int[] ringBones,
-            AvatarMaterial material,
-            int sides)
-        {
-            int first = vertices.Count;
-            for (int ring = 0; ring < centers.Length; ring++)
-            {
-                Vector3 axis;
-                if (ring == 0)
-                {
-                    axis = centers[1] - centers[0];
-                }
-                else if (ring == centers.Length - 1)
-                {
-                    axis = centers[ring] - centers[ring - 1];
-                }
-                else
-                {
-                    axis = centers[ring + 1] - centers[ring - 1];
-                }
-
-                axis.Normalize();
-                Vector3 tangent = Vector3.Cross(axis, Vector3.up);
-                if (tangent.sqrMagnitude < 0.001f)
-                {
-                    tangent = Vector3.right;
-                }
-
-                tangent.Normalize();
-                Vector3 bitangent = Vector3.Cross(tangent, axis).normalized;
-
-                for (int s = 0; s < sides; s++)
-                {
-                    float angle = Mathf.PI * 2f * s / sides;
-                    Vector3 radial = tangent * Mathf.Cos(angle) * radiusX[ring] + bitangent * Mathf.Sin(angle) * radiusZ[ring];
-                    int bone0 = ringBones[ring];
-                    int bone1 = ring < ringBones.Length - 1 ? ringBones[ring + 1] : bone0;
-                    AddVertex(centers[ring] + radial, radial.normalized, new Vector2(s / (float)sides, ring / (float)(centers.Length - 1)), bone0, bone1, 0.92f, 0.08f);
-                }
-            }
-
-            for (int ring = 0; ring < centers.Length - 1; ring++)
-            {
-                for (int s = 0; s < sides; s++)
-                {
-                    int a = first + ring * sides + s;
-                    int b = first + ring * sides + (s + 1) % sides;
-                    int c = first + (ring + 1) * sides + s;
-                    int d = first + (ring + 1) * sides + (s + 1) % sides;
-                    AddTriangle(material, a, c, b);
-                    AddTriangle(material, b, c, d);
-                }
-            }
-        }
-
-        private void AddTaperedTube(
-            Vector3 start,
-            Vector3 end,
-            float radiusXStart,
-            float radiusZStart,
-            float radiusXEnd,
-            float radiusZEnd,
-            int startBone,
-            int endBone,
-            AvatarMaterial material,
-            int sides,
-            int segments)
-        {
-            Vector3 axis = (end - start).normalized;
-            Vector3 tangent = Vector3.Cross(axis, Vector3.up);
-            if (tangent.sqrMagnitude < 0.001f)
-            {
-                tangent = Vector3.Cross(axis, Vector3.right);
-            }
-
-            tangent.Normalize();
-            Vector3 bitangent = Vector3.Cross(tangent, axis).normalized;
-            int first = vertices.Count;
-
-            for (int y = 0; y <= segments; y++)
-            {
-                float t = y / (float)segments;
-                float radiusX = Mathf.Lerp(radiusXStart, radiusXEnd, t);
-                float radiusZ = Mathf.Lerp(radiusZStart, radiusZEnd, t);
-                Vector3 center = Vector3.Lerp(start, end, t);
-
-                for (int s = 0; s < sides; s++)
-                {
-                    float angle = Mathf.PI * 2f * s / sides;
-                    Vector3 radial = tangent * Mathf.Cos(angle) * radiusX + bitangent * Mathf.Sin(angle) * radiusZ;
-                    AddVertex(center + radial, radial.normalized, new Vector2(s / (float)sides, t), startBone, endBone, 1f - t, t);
-                }
-            }
-
-            for (int y = 0; y < segments; y++)
-            {
-                for (int s = 0; s < sides; s++)
-                {
-                    int a = first + y * sides + s;
-                    int b = first + y * sides + (s + 1) % sides;
-                    int c = first + (y + 1) * sides + s;
-                    int d = first + (y + 1) * sides + (s + 1) % sides;
-                    AddTriangle(material, a, c, b);
-                    AddTriangle(material, b, c, d);
-                }
-            }
-        }
-
-        private void AddSphere(
-            Vector3 center,
-            Vector3 radius,
-            int bone,
-            AvatarMaterial material,
-            int longitude,
-            int latitude,
-            float minVertical01,
-            float maxVertical01)
-        {
-            int first = vertices.Count;
-            int startLat = Mathf.Max(0, Mathf.FloorToInt(latitude * minVertical01));
-            int endLat = Mathf.Min(latitude, Mathf.CeilToInt(latitude * maxVertical01));
-
-            for (int lat = startLat; lat <= endLat; lat++)
-            {
-                float v = lat / (float)latitude;
-                float theta = Mathf.PI * v;
-                float sin = Mathf.Sin(theta);
-                float cos = Mathf.Cos(theta);
-
-                for (int lon = 0; lon <= longitude; lon++)
-                {
-                    float u = lon / (float)longitude;
-                    float phi = Mathf.PI * 2f * u;
-                    Vector3 normal = new Vector3(Mathf.Cos(phi) * sin, cos, Mathf.Sin(phi) * sin);
-                    Vector3 point = center + Vector3.Scale(normal, radius);
-                    AddVertex(point, normal.normalized, new Vector2(u, v), bone, bone, 1f, 0f);
-                }
-            }
-
-            int rows = endLat - startLat;
-            int stride = longitude + 1;
-            for (int row = 0; row < rows; row++)
-            {
-                for (int lon = 0; lon < longitude; lon++)
-                {
-                    int a = first + row * stride + lon;
-                    int b = first + row * stride + lon + 1;
-                    int c = first + (row + 1) * stride + lon;
-                    int d = first + (row + 1) * stride + lon + 1;
-                    AddTriangle(material, a, c, b);
-                    AddTriangle(material, b, c, d);
-                }
-            }
-        }
-
-        private void AddVertex(Vector3 position, Vector3 normal, Vector2 uv, int bone0, int bone1, float weight0, float weight1)
-        {
-            vertices.Add(position);
-            normals.Add(normal);
-            uvs.Add(uv);
-            boneWeights.Add(new BoneWeight
-            {
-                boneIndex0 = bone0,
-                boneIndex1 = bone1,
-                weight0 = weight0,
-                weight1 = weight1
-            });
-        }
-
-        private void AddTriangle(AvatarMaterial material, int a, int b, int c)
-        {
-            List<int> triangles = submeshTriangles[(int)material];
-            triangles.Add(a);
-            triangles.Add(b);
-            triangles.Add(c);
-        }
-
-        private Matrix4x4[] CreateBindPoses()
-        {
-            Matrix4x4[] bindPoses = new Matrix4x4[bones.Count];
-            for (int i = 0; i < bones.Count; i++)
-            {
-                bindPoses[i] = bones[i].worldToLocalMatrix * modelRoot.localToWorldMatrix;
-            }
-
-            return bindPoses;
-        }
-
-        private void CreateFaceAndHairDetails()
-        {
-            CreateFaceQuad("left_eye_white", head, new Vector3(-0.087f, 0.16f, -0.247f), new Vector2(0.082f, 0.044f), Color.white);
-            CreateFaceQuad("right_eye_white", head, new Vector3(0.087f, 0.16f, -0.247f), new Vector2(0.082f, 0.044f), Color.white);
-            CreateFaceQuad("left_iris", head, new Vector3(-0.087f, 0.158f, -0.252f), new Vector2(0.036f, 0.040f), new Color32(65, 201, 169, 255));
-            CreateFaceQuad("right_iris", head, new Vector3(0.087f, 0.158f, -0.252f), new Vector2(0.036f, 0.040f), new Color32(65, 201, 169, 255));
-            CreateFaceQuad("left_pupil", head, new Vector3(-0.087f, 0.158f, -0.257f), new Vector2(0.015f, 0.026f), Color.black);
-            CreateFaceQuad("right_pupil", head, new Vector3(0.087f, 0.158f, -0.257f), new Vector2(0.015f, 0.026f), Color.black);
-            CreateFaceQuad("left_brow", head, new Vector3(-0.087f, 0.215f, -0.255f), new Vector2(0.072f, 0.012f), new Color32(91, 63, 30, 255));
-            CreateFaceQuad("right_brow", head, new Vector3(0.087f, 0.215f, -0.255f), new Vector2(0.072f, 0.012f), new Color32(91, 63, 30, 255));
-            mouth = CreateFaceQuad("mouth", head, new Vector3(0f, 0.057f, -0.258f), new Vector2(0.122f, 0.026f), new Color32(196, 75, 88, 255));
-
-            Color hair = new Color32(255, 194, 72, 255);
-            CreateHairRibbon("back_hair_center", head, new Vector3(0f, 0.30f, 0.16f), new Vector3(0f, -0.05f, 0.20f), new Vector3(0f, -0.56f, 0.13f), 0.20f, 0.24f, 0.16f, hair);
-            CreateHairRibbon("back_hair_left", head, new Vector3(-0.12f, 0.25f, 0.11f), new Vector3(-0.20f, -0.08f, 0.15f), new Vector3(-0.22f, -0.48f, 0.05f), 0.13f, 0.16f, 0.10f, hair);
-            CreateHairRibbon("back_hair_right", head, new Vector3(0.12f, 0.25f, 0.11f), new Vector3(0.20f, -0.08f, 0.15f), new Vector3(0.22f, -0.48f, 0.05f), 0.13f, 0.16f, 0.10f, hair);
-            CreateHairRibbon("front_bang_left", head, new Vector3(-0.08f, 0.31f, -0.18f), new Vector3(-0.11f, 0.16f, -0.25f), new Vector3(-0.06f, 0.03f, -0.22f), 0.08f, 0.07f, 0.02f, hair);
-            CreateHairRibbon("front_bang_right", head, new Vector3(0.08f, 0.31f, -0.18f), new Vector3(0.11f, 0.16f, -0.25f), new Vector3(0.06f, 0.03f, -0.22f), 0.08f, 0.07f, 0.02f, hair);
-        }
-
-        private Transform CreateFaceQuad(string name, Transform parent, Vector3 localPosition, Vector2 size, Color color)
-        {
-            GameObject go = new GameObject(name);
-            go.transform.SetParent(parent, false);
-            go.transform.localPosition = localPosition;
-            go.transform.localRotation = Quaternion.identity;
-            go.transform.localScale = Vector3.one;
-
-            Mesh mesh = new Mesh { name = $"{name}_mesh" };
-            float halfWidth = size.x * 0.5f;
-            float halfHeight = size.y * 0.5f;
-            mesh.vertices = new[]
-            {
-                new Vector3(-halfWidth, -halfHeight, 0f),
-                new Vector3(-halfWidth, halfHeight, 0f),
-                new Vector3(halfWidth, halfHeight, 0f),
-                new Vector3(halfWidth, -halfHeight, 0f)
-            };
-            mesh.uv = new[]
-            {
-                Vector2.zero,
-                Vector2.up,
-                Vector2.one,
-                Vector2.right
-            };
-            mesh.triangles = new[] { 0, 1, 2, 0, 2, 3 };
-            mesh.RecalculateNormals();
-
-            MeshFilter filter = go.AddComponent<MeshFilter>();
-            filter.sharedMesh = mesh;
-            MeshRenderer renderer = go.AddComponent<MeshRenderer>();
-            renderer.sharedMaterial = CreateMaterial($"{name}_mat", color);
-            return go.transform;
-        }
-
-        private void CreateHairRibbon(
-            string name,
-            Transform parent,
-            Vector3 top,
-            Vector3 middle,
-            Vector3 bottom,
-            float topWidth,
-            float middleWidth,
-            float bottomWidth,
-            Color color)
-        {
-            GameObject go = new GameObject(name);
-            go.transform.SetParent(parent, false);
-            go.transform.localPosition = Vector3.zero;
-            go.transform.localRotation = Quaternion.identity;
-            go.transform.localScale = Vector3.one;
-
-            Mesh mesh = new Mesh { name = $"{name}_mesh" };
-            mesh.vertices = new[]
-            {
-                top + Vector3.left * topWidth * 0.5f,
-                top + Vector3.right * topWidth * 0.5f,
-                middle + Vector3.left * middleWidth * 0.5f,
-                middle + Vector3.right * middleWidth * 0.5f,
-                bottom + Vector3.left * bottomWidth * 0.5f,
-                bottom + Vector3.right * bottomWidth * 0.5f
-            };
-            mesh.uv = new[]
-            {
-                new Vector2(0f, 1f),
-                new Vector2(1f, 1f),
-                new Vector2(0f, 0.5f),
-                new Vector2(1f, 0.5f),
-                Vector2.zero,
-                Vector2.right
-            };
-            mesh.triangles = new[] { 0, 2, 1, 1, 2, 3, 2, 4, 3, 3, 4, 5 };
-            mesh.RecalculateNormals();
-
-            MeshFilter filter = go.AddComponent<MeshFilter>();
-            filter.sharedMesh = mesh;
-            MeshRenderer renderer = go.AddComponent<MeshRenderer>();
-            renderer.sharedMaterial = CreateMaterial($"{name}_mat", color);
-        }
-
         private void CreateCameraAndLight()
         {
             renderTexture = new RenderTexture(textureSize, textureSize, 16, RenderTextureFormat.ARGB32)
@@ -967,9 +763,6 @@ namespace DeepSeek.DigitalHuman
             keyLight.transform.SetParent(sceneRoot, false);
             keyLight.transform.localPosition = new Vector3(-1.2f, 2.7f, -1.8f);
             keyLight.transform.localRotation = Quaternion.Euler(44f, 28f, 0f);
-            Light light = keyLight.AddComponent<Light>();
-            light.type = LightType.Directional;
-            light.intensity = 1.18f;
 
             GameObject fillLight = new GameObject("AvatarFillLight");
             fillLight.transform.SetParent(sceneRoot, false);
@@ -980,36 +773,9 @@ namespace DeepSeek.DigitalHuman
             fill.intensity = 0.7f;
         }
 
-        private int IndexOf(Transform bone)
-        {
-            return bones.IndexOf(bone);
-        }
-
-        private Vector3 WorldOf(Transform bone)
-        {
-            return modelRoot.InverseTransformPoint(bone.position);
-        }
-
-        private static Material CreateMaterial(string name, Color color)
-        {
-            Shader shader = Shader.Find("Standard");
-            if (shader == null)
-            {
-                shader = Shader.Find("Universal Render Pipeline/Lit");
-            }
-
-            Material material = new Material(shader)
-            {
-                name = name,
-                color = color
-            };
-
-            if (material.HasProperty("_Smoothness"))
-            {
-                material.SetFloat("_Smoothness", 0.42f);
-            }
-
-            return material;
-        }
     }
 }
+
+
+
+

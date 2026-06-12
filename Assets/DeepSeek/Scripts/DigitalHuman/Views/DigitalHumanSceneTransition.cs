@@ -11,9 +11,6 @@ namespace DeepSeek.DigitalHuman
         [SerializeField] private float fadeSeconds = 3f;
 
         private Coroutine fadeRoutine;
-        private bool isFading;
-
-        public bool IsFading => isFading;
 
         private void Awake()
         {
@@ -74,9 +71,6 @@ namespace DeepSeek.DigitalHuman
         private IEnumerator FadeTo(float targetAlpha, float duration)
         {
             EnsureBuilt();
-            isFading = true;
-
-            // 【修复】在淡入淡出动画进行中，始终阻止射线检测
             fadeGroup.blocksRaycasts = true;
 
             float startAlpha = fadeGroup.alpha;
@@ -90,13 +84,7 @@ namespace DeepSeek.DigitalHuman
             }
 
             fadeGroup.alpha = targetAlpha;
-
-            // 【修复】只有当淡入完成（alpha接近0）时才关闭射线阻止
-            // 淡出完成（alpha=1）时仍然阻止，防止切换过程中点击
-            // 使用 targetAlpha > 0.01f 而不是 > 0.01 来更精确判断
             fadeGroup.blocksRaycasts = targetAlpha > 0.01f;
-
-            isFading = false;
         }
 
         private void EnsureBuilt()
@@ -113,8 +101,7 @@ namespace DeepSeek.DigitalHuman
                 canvasObject.transform.SetParent(transform, false);
                 canvas = canvasObject.AddComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                canvas.sortingOrder = 9999;  // 【增强】确保在最上层
-                canvas.overrideSorting = true;  // 【增强】强制覆盖排序
+                canvas.sortingOrder = 1000;
                 canvasObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 canvasObject.AddComponent<GraphicRaycaster>();
             }
