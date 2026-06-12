@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -182,10 +182,12 @@ public static class HigokumaruDigitalHumanAdapter
         AddPoseState(controller, stateMachine, idle, "ImitationClap", clap, new Vector3(520f, 0f, 0f));
         AddPoseState(controller, stateMachine, idle, "Celebrate", cheering, new Vector3(520f, 90f, 0f));
 
-        AddPoseState(controller, stateMachine, idle, "Speaking", null, new Vector3(840f, -180f, 0f));
-        AddPoseState(controller, stateMachine, idle, "OfferItem", null, new Vector3(840f, -90f, 0f));
-        AddPoseState(controller, stateMachine, idle, "ColorPrompt", null, new Vector3(840f, 0f, 0f));
-        AddPoseState(controller, stateMachine, idle, "ImitationNod", null, new Vector3(840f, 90f, 0f));
+        AddPoseState(controller, stateMachine, idle, "Speaking", waving, new Vector3(840f, -180f, 0f));
+        AddPoseState(controller, stateMachine, idle, "OfferItem", waving, new Vector3(840f, -90f, 0f));
+        AddPoseState(controller, stateMachine, idle, "ColorPrompt", waving, new Vector3(840f, 0f, 0f));
+        AddPoseState(controller, stateMachine, idle, "ImitationNod", waving, new Vector3(840f, 90f, 0f));
+        AddPoseState(controller, stateMachine, idle, "Standing_Clap", clap, new Vector3(840f, 120f, 0f));
+        AddPoseState(controller, stateMachine, idle, "Cheering", cheering, new Vector3(840f, 150f, 0f));
 
         EditorUtility.SetDirty(controller);
         return controller;

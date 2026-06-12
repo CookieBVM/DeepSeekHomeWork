@@ -16,30 +16,10 @@ namespace DeepSeek.DigitalHuman
         [SerializeField] private Vector3 externalAvatarLocalEuler = Vector3.zero;
         [SerializeField] private float externalAvatarScale = 1f;
 
-        private readonly List<Transform> bones = new List<Transform>();
-        private readonly List<Vector3> vertices = new List<Vector3>();
-        private readonly List<Vector3> normals = new List<Vector3>();
-        private readonly List<Vector2> uvs = new List<Vector2>();
-        private readonly List<BoneWeight> boneWeights = new List<BoneWeight>();
-        private readonly List<int>[] submeshTriangles =
-        {
-            new List<int>(),
-            new List<int>(),
-            new List<int>(),
-            new List<int>(),
-            new List<int>()
-        };
-
         private RenderTexture renderTexture;
         private Camera avatarCamera;
         private Transform sceneRoot;
         private Transform modelRoot;
-        private SkinnedMeshRenderer skinnedMeshRenderer;
-        private Material skinMaterial;
-        private Material shirtMaterial;
-        private Material pantsMaterial;
-        private Material hairMaterial;
-        private Material shoeMaterial;
         private Transform hips;
         private Transform spine;
         private Transform chest;
@@ -74,14 +54,6 @@ namespace DeepSeek.DigitalHuman
         private Quaternion rightLegPoseRotation = Quaternion.identity;
         private Quaternion headPoseRotation = Quaternion.identity;
 
-        private enum AvatarMaterial
-        {
-            Skin = 0,
-            Shirt = 1,
-            Pants = 2,
-            Hair = 3,
-            Shoes = 4
-        }
 
         private void Awake()
         {
