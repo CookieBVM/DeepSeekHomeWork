@@ -1,4 +1,4 @@
-using DeepSeek;
+﻿using DeepSeek;
 using DeepSeek.DigitalHuman;
 using TMPro;
 using UnityEditor;
@@ -39,6 +39,8 @@ public static class DigitalHumanSampleSceneBuilder
         DigitalHumanAvatarView avatarView = system.AddComponent<DigitalHumanAvatarView>();
         DigitalHumanFeedbackView feedbackView = system.AddComponent<DigitalHumanFeedbackView>();
         DigitalHumanSceneTransition sceneTransition = system.AddComponent<DigitalHumanSceneTransition>();
+        DigitalHumanStatsLogger statsLogger = system.AddComponent<DigitalHumanStatsLogger>();
+        DigitalHumanStatsBootstrap bootstrap = system.AddComponent<DigitalHumanStatsBootstrap>();
 
         Canvas canvas = CreateCanvas("DigitalHumanCanvas", 800);
         RectTransform root = CreatePanel("DigitalHumanRoot", canvas.transform, new Color32(255, 247, 236, 255), true);
