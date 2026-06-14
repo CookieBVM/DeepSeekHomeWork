@@ -1,0 +1,59 @@
+{
+  "session_id": "session_20260612_164005",
+  "events": [
+    {
+      "event_id": "evt_1781253626737_0",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 3.1973002
+      },
+      "timestamp": 1781253626.737876,
+      "session_id": "session_20260612_164005",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781253852678_1",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 21.33127
+      },
+      "timestamp": 1781253852.6787255,
+      "session_id": "session_20260612_164005",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260612_164005",
+    "start_time": 1781253605.4935381,
+    "end_time": null,
+    "total_events": 2,
+    "correct_events": 0,
+    "wrong_events": 0,
+    "consecutive_correct": 0,
+    "max_consecutive_correct": 0,
+    "total_duration": 247.18518733978271,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 2
+      }
+    },
+    "accuracy": 0.0
+  },
+  "last_updated": 1781253852.6787255
+}

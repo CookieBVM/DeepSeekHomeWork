@@ -64,7 +64,9 @@
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Services\DigitalHumanDataSyncService.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Core\DigitalHumanInputHandler.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Models\DigitalHumanThemeConfig.cs" />
+    <Compile Include="Assets\DeepSeek\Scripts\PythonBridgeTester.cs" />
     <Compile Include="Assets\Scripts\DeepSeekDataModel.cs" />
+    <Compile Include="Assets\DeepSeek\Scripts\PythonBridge.cs" />
     <Compile Include="Assets\Scripts\DeepSeekAI.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Services\DigitalHumanAIApiService.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Models\DigitalHumanModels.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Controllers\DigitalHumanColoringController.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DeepSeekChatWindow.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Services\DigitalHumanDataTracker.cs" />
+    <Compile Include="Assets\DeepSeek\Scripts\FixChineseFont.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Views\DigitalHumanSceneTransition.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Controllers\DigitalHumanDialogueController.cs" />
     <Compile Include="Assets\DeepSeek\Scripts\DigitalHuman\Controllers\DigitalHumanGameController.cs" />

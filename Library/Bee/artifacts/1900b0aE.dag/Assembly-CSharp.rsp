@@ -374,6 +374,9 @@
 "Assets/DeepSeek/Scripts/DigitalHuman/Views/DigitalHumanFeedbackView.cs"
 "Assets/DeepSeek/Scripts/DigitalHuman/Views/DigitalHumanSceneTransition.cs"
 "Assets/DeepSeek/Scripts/DigitalHuman/Views/DigitalHumanUIView.cs"
+"Assets/DeepSeek/Scripts/FixChineseFont.cs"
+"Assets/DeepSeek/Scripts/PythonBridge.cs"
+"Assets/DeepSeek/Scripts/PythonBridgeTester.cs"
 "Assets/Scripts/DeepSeekAI.cs"
 "Assets/Scripts/DeepSeekDataModel.cs"
 -langversion:9.0
