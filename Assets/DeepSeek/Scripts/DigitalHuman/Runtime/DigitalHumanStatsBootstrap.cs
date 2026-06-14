@@ -13,6 +13,21 @@ namespace DeepSeek.DigitalHuman
             initialized = false;
         }
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void OnAfterSceneLoad()
+        {
+            if (initialized) return;
+
+            var existing = FindObjectOfType<DigitalHumanStatsBootstrap>();
+            if (existing == null)
+            {
+                var go = new GameObject("DigitalHumanStatsBootstrap");
+                DontDestroyOnLoad(go);
+                go.AddComponent<DigitalHumanStatsBootstrap>();
+                Debug.Log("[DigitalHumanStatsBootstrap] Auto-created bootstrap GameObject");
+            }
+        }
+
         private void Awake()
         {
             EnsureStatsLogger();
@@ -28,33 +43,39 @@ namespace DeepSeek.DigitalHuman
             if (initialized) return;
 
             var existing = FindObjectOfType<DigitalHumanStatsLogger>();
-            if (existing == null)
+            if (existing != null)
             {
-                var system = GameObject.Find("DigitalHumanSystem");
-                if (system == null)
+                initialized = true;
+                return;
+            }
+
+            var system = GameObject.Find("DigitalHumanSystem");
+            if (system == null)
+            {
+                var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+                foreach (var go in rootObjects)
                 {
-                    var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-                    foreach (var go in rootObjects)
+                    if (go.GetComponentInChildren<DigitalHumanGameController>() != null)
                     {
-                        if (go.GetComponentInChildren<DigitalHumanGameController>() != null)
-                        {
-                            system = go;
-                            break;
-                        }
+                        system = go;
+                        break;
                     }
                 }
+            }
 
-                if (system != null)
-                {
-                    var logger = system.AddComponent<DigitalHumanStatsLogger>();
-                    initialized = true;
-                    Debug.Log("✅ DigitalHumanStatsLogger 已自动添加到场景");
-                }
+            if (system != null)
+            {
+                system.AddComponent<DigitalHumanStatsLogger>();
             }
             else
             {
-                initialized = true;
+                var go = new GameObject("PythonBridgeSystem");
+                DontDestroyOnLoad(go);
+                go.AddComponent<DigitalHumanStatsLogger>();
+                Debug.Log("[DigitalHumanStatsBootstrap] No DigitalHumanSystem found, created standalone PythonBridgeSystem");
             }
+
+            initialized = true;
         }
     }
 }
