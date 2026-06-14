@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -124,7 +123,7 @@ namespace DeepSeek.DigitalHuman
 
             try
             {
-                string json = File.ReadAllText(path, Encoding.UTF8);
+                string json = File.ReadAllText(path);
                 return JsonConvert.DeserializeObject<List<DigitalHumanSessionRecord>>(json)
                     ?? new List<DigitalHumanSessionRecord>();
             }
@@ -139,7 +138,7 @@ namespace DeepSeek.DigitalHuman
         {
             string path = GetCachePath();
             Directory.CreateDirectory(Path.GetDirectoryName(path));
-            File.WriteAllText(path, JsonConvert.SerializeObject(sessions, Formatting.Indented), Encoding.UTF8);
+            File.WriteAllText(path, JsonConvert.SerializeObject(sessions, Formatting.Indented));
         }
 
         private void SaveSessionToCache(DigitalHumanSessionRecord session)

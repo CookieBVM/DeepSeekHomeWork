@@ -132,12 +132,6 @@ namespace DeepSeek.DigitalHuman
                         continue;
                     }
 
-                    // 确保按钮的Image开启射线检测
-                    if (button.image != null)
-                    {
-                        button.image.raycastTarget = true;
-                    }
-
                     bool visible = i < areas.Count;
                     button.gameObject.SetActive(visible);
                     button.onClick.RemoveAllListeners();
@@ -173,12 +167,6 @@ namespace DeepSeek.DigitalHuman
                 button.GetComponentInChildren<Text>().text = area.completed
                     ? $"{area.displayName} 完成"
                     : area.displayName;
-
-                // 确保动态创建的按钮开启射线检测
-                if (button.image != null)
-                {
-                    button.image.raycastTarget = true;
-                }
 
                 int capturedIndex = i;
                 button.onClick.AddListener(() =>
