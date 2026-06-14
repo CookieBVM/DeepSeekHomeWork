@@ -78,7 +78,7 @@ namespace DeepSeek.DigitalHuman
 
             sceneRoot = new GameObject("DigitalHumanAvatarScene").transform;
             sceneRoot.SetParent(transform, false);
-            sceneRoot.localPosition = Vector3.zero;
+            sceneRoot.localPosition = new Vector3(-400f, 0f, 0f);
 
             CreateCameraAndLight();
             LoadAvatarFromResources();
