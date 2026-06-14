@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -211,23 +211,42 @@ namespace DeepSeek
         /// 启动标准输入输出模式的Python进程
         /// </summary>
 
-        private string ResolvePythonPath()
+                private string ResolvePythonPath()
         {
             if (!string.IsNullOrEmpty(pythonExePath) && System.IO.File.Exists(pythonExePath))
                 return pythonExePath;
-            string[] candidates = { "py", "python3", "python", "python.exe" };
-            foreach (var c in candidates)
-            {
-                try { var p = new System.Diagnostics.Process { StartInfo = new System.Diagnostics.ProcessStartInfo { FileName = c, Arguments = "--version", UseShellExecute = false, RedirectStandardOutput = true, CreateNoWindow = true } }; p.Start(); p.WaitForExit(3000); if (p.ExitCode == 0) return c; }
-                catch { }
-            }
-            string[] paths = { @"C:\WINDOWS\py.exe", @"C:\Windows\py.exe" };
-            foreach (var p in paths) if (System.IO.File.Exists(p)) return p;
+
+            string[] fixedPaths = {
+                @"C:\WINDOWS\py.exe",
+                @"C:\Windows\py.exe",
+                @"C:\Python3\python.exe",
+                @"C:\Python\python.exe",
+                @"C:\Python311\python.exe",
+                @"C:\Python312\python.exe",
+                @"C:\Python313\python.exe"
+            };
+            foreach (var p in fixedPaths) if (System.IO.File.Exists(p)) return p;
+
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             try { var found = System.IO.Directory.GetFiles(appData + "\\Programs\\Python", "python.exe", System.IO.SearchOption.AllDirectories); if (found.Length > 0) return found[0]; } catch { }
+
+            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            try { var dirs = System.IO.Directory.GetDirectories(programFiles, "Python*"); foreach (var d in dirs) { string exe = System.IO.Path.Combine(d, "python.exe"); if (System.IO.File.Exists(exe)) return exe; } } catch { }
+
+            string[] pathDirs = (Environment.GetEnvironmentVariable("PATH") ?? "").Split(';');
+            foreach (var dir in pathDirs)
+            {
+                string exe = System.IO.Path.Combine(dir.Trim(), "py.exe");
+                if (System.IO.File.Exists(exe)) return exe;
+                exe = System.IO.Path.Combine(dir.Trim(), "python.exe");
+                if (System.IO.File.Exists(exe)) return exe;
+            }
+
             return pythonExePath;
         }
-        private void StartStdInOutProcess(string scriptPath)
+
+
+private void StartStdInOutProcess(string scriptPath)
         {
             cancellationTokenSource = new CancellationTokenSource();
             
