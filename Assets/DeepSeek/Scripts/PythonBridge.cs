@@ -191,7 +191,7 @@ namespace DeepSeek
                 monitorProcess.StartInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/c start \"Python实时统计监视器\" \"C:\python\python.exe\" \"{monitorFullPath}\" \"{logFullPath}\"",
+                    Arguments = $"/c start \"Python实时统计监视器\" \"C:/python/python.exe\" \"{monitorFullPath}\" \"{logFullPath}\"",
                     UseShellExecute = true,
                     CreateNoWindow = false,
                     WorkingDirectory = Path.GetDirectoryName(monitorFullPath)
