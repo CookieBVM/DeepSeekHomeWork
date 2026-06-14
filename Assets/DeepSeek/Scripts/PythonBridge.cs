@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -22,25 +22,25 @@ namespace DeepSeek
         [Header("Python配置")]
         [SerializeField] private string pythonScriptPath = "python_server/main.py";
         [SerializeField] private string pythonExePath = "py";
-        
+
         [Header("通信模式")]
         [SerializeField] private CommunicationMode mode = CommunicationMode.StdInOut;
-        
+
         [Header("文件监听配置")]
         [SerializeField] private string inputFilePath = "python_server/data/communication/unity_to_python.json";
         [SerializeField] private string outputFilePath = "python_server/data/communication/python_to_unity.json";
         [SerializeField] private float checkInterval = 0.5f;
-        
+
         [Header("调试")]
         [SerializeField] private bool autoStartPython = true;
         [SerializeField] private bool logMessages = true;
-        
+
         [Header("实时监控")]
         [Tooltip("启动时是否打开Python实时统计终端窗口")]
         [SerializeField] private bool openMonitorWindow = true;
         [SerializeField] private string monitorScriptPath = "python_server/tail_log.py";
         [SerializeField] private string statsLogFilePath = "python_server/data/logs/latest_stats_实时监控.log";
-        
+
         private Process pythonProcess;
         private Process monitorProcess;
         private StreamWriter processStdin;
@@ -51,7 +51,7 @@ namespace DeepSeek
         private Task errorReadTask;
         private CancellationTokenSource cancellationTokenSource;
         private float lastFileCheckTime;
-        
+
         /// <summary>
         /// 通信模式枚举
         /// </summary>
@@ -60,22 +60,22 @@ namespace DeepSeek
             StdInOut,
             FileWatch
         }
-        
+
         /// <summary>
         /// Python响应事件
         /// </summary>
         public event Action<PythonResponse> OnResponseReceived;
-        
+
         /// <summary>
         /// Python错误事件
         /// </summary>
         public event Action<string> OnError;
-        
+
         /// <summary>
         /// 会话状态
         /// </summary>
         public bool IsRunning => isRunning;
-        
+
         /// <summary>
         /// 是否打开实时统计监控窗口
         /// </summary>
@@ -84,12 +84,12 @@ namespace DeepSeek
             get => openMonitorWindow;
             set => openMonitorWindow = value;
         }
-        
+
         /// <summary>
         /// 实时统计日志文件路径（供监控窗口使用）
         /// </summary>
         public string StatsLogFile => statsLogFilePath;
-        
+
         private void Start()
         {
             if (autoStartPython)
@@ -97,7 +97,7 @@ namespace DeepSeek
                 StartPython();
             }
         }
-        
+
         private void Update()
         {
             if (mode == CommunicationMode.FileWatch && isRunning)
@@ -109,14 +109,14 @@ namespace DeepSeek
                 }
             }
         }
-        
+
         private void OnDestroy()
         {
             StopPython();
         }
-        
+
         #region 进程管理
-        
+
         /// <summary>
         /// 启动Python服务
         /// </summary>
@@ -127,20 +127,20 @@ namespace DeepSeek
                 UnityEngine.Debug.LogWarning("Python服务已经在运行中");
                 return;
             }
-            
+
             try
             {
                 string projectRoot = Application.dataPath;
                 projectRoot = projectRoot.Substring(0, projectRoot.LastIndexOf("/Assets"));
                 string scriptFullPath = Path.Combine(projectRoot, pythonScriptPath);
-                
+
                 if (!File.Exists(scriptFullPath))
                 {
                     UnityEngine.Debug.LogError($"找不到Python脚本: {scriptFullPath}");
                     OnError?.Invoke($"找不到Python脚本: {scriptFullPath}");
                     return;
                 }
-                
+
                 if (mode == CommunicationMode.StdInOut)
                 {
                     StartStdInOutProcess(scriptFullPath);
@@ -149,10 +149,10 @@ namespace DeepSeek
                 {
                     StartFileWatchProcess(scriptFullPath);
                 }
-                
+
                 isRunning = true;
                 UnityEngine.Debug.Log("Python服务启动成功");
-                
+
                 if (openMonitorWindow)
                 {
                     StartMonitorWindow(projectRoot);
@@ -164,7 +164,7 @@ namespace DeepSeek
                 OnError?.Invoke(ex.Message);
             }
         }
-        
+
         /// <summary>
         /// 启动Python实时统计监控终端窗口
         /// </summary>
@@ -174,19 +174,19 @@ namespace DeepSeek
             {
                 string monitorFullPath = Path.Combine(projectRoot, monitorScriptPath);
                 string logFullPath = Path.Combine(projectRoot, statsLogFilePath);
-                
+
                 if (!File.Exists(monitorFullPath))
                 {
                     UnityEngine.Debug.LogWarning($"找不到监控脚本: {monitorFullPath}，跳过监控窗口启动");
                     return;
                 }
-                
+
                 string logDir = Path.GetDirectoryName(logFullPath);
                 if (!Directory.Exists(logDir))
                 {
                     Directory.CreateDirectory(logDir);
                 }
-                
+
                 monitorProcess = new Process();
                 monitorProcess.StartInfo = new ProcessStartInfo
                 {
@@ -196,7 +196,7 @@ namespace DeepSeek
                     CreateNoWindow = false,
                     WorkingDirectory = Path.GetDirectoryName(monitorFullPath)
                 };
-                
+
                 monitorProcess.Start();
                 UnityEngine.Debug.Log($"Python实时统计终端窗口已启动");
                 UnityEngine.Debug.Log($"监控日志文件: {logFullPath}");
@@ -206,12 +206,12 @@ namespace DeepSeek
                 UnityEngine.Debug.LogWarning($"启动监控窗口失败: {ex.Message}");
             }
         }
-        
+
         /// <summary>
         /// 启动标准输入输出模式的Python进程
         /// </summary>
 
-                                private string ResolvePythonPath()
+        private string ResolvePythonPath()
         {
             if (!string.IsNullOrEmpty(pythonExePath) && System.IO.File.Exists(pythonExePath))
                 return pythonExePath;
@@ -253,7 +253,7 @@ namespace DeepSeek
         private void StartStdInOutProcess(string scriptPath)
         {
             cancellationTokenSource = new CancellationTokenSource();
-            
+
             pythonProcess = new Process();
             pythonProcess.StartInfo = new ProcessStartInfo
             {
@@ -269,25 +269,25 @@ namespace DeepSeek
                 StandardOutputEncoding = Encoding.UTF8,
                 StandardErrorEncoding = Encoding.UTF8
             };
-            
+
             pythonProcess.EnableRaisingEvents = true;
             pythonProcess.Exited += (sender, e) =>
             {
                 isRunning = false;
                 UnityEngine.Debug.Log($"Python进程已退出，退出码: {pythonProcess.ExitCode}");
             };
-            
+
             pythonProcess.Start();
             processStdin = pythonProcess.StandardInput;
             processStdin.AutoFlush = true;
             processStdout = pythonProcess.StandardOutput;
             processStderr = pythonProcess.StandardError;
-            
+
             var token = cancellationTokenSource.Token;
             outputReadTask = Task.Run(() => ReadOutputAsync(token), token);
             errorReadTask = Task.Run(() => ReadErrorAsync(token), token);
         }
-        
+
         /// <summary>
         /// 启动文件监听模式
         /// </summary>
@@ -302,16 +302,16 @@ namespace DeepSeek
                 CreateNoWindow = true,
                 WorkingDirectory = Path.GetDirectoryName(scriptPath)
             };
-            
+
             pythonProcess.EnableRaisingEvents = true;
             pythonProcess.Exited += (sender, e) =>
             {
                 isRunning = false;
                 UnityEngine.Debug.Log($"Python进程已退出，退出码: {pythonProcess.ExitCode}");
             };
-            
+
             pythonProcess.Start();
-            
+
             string projectRoot = Application.dataPath;
             projectRoot = projectRoot.Substring(0, projectRoot.LastIndexOf("/Assets"));
             string commDir = Path.Combine(projectRoot, Path.GetDirectoryName(inputFilePath));
@@ -320,18 +320,18 @@ namespace DeepSeek
                 Directory.CreateDirectory(commDir);
             }
         }
-        
+
         /// <summary>
         /// 停止Python服务（非阻塞版本，不会卡死）
         /// </summary>
         public void StopPython()
         {
             if (!isRunning) return;
-            
+
             UnityEngine.Debug.Log("正在停止Python服务...");
-            
+
             isRunning = false;
-            
+
             try
             {
                 cancellationTokenSource?.Cancel();
@@ -340,10 +340,10 @@ namespace DeepSeek
             {
                 UnityEngine.Debug.LogWarning($"取消异步任务时出错: {ex.Message}");
             }
-            
+
             _ = StopPythonAsync();
         }
-        
+
         /// <summary>
         /// 异步停止Python服务（避免阻塞主线程）
         /// </summary>
@@ -363,7 +363,7 @@ namespace DeepSeek
                         UnityEngine.Debug.LogWarning($"终止Python进程时出错: {ex.Message}");
                     }
                 }
-                
+
                 if (outputReadTask != null && !outputReadTask.IsCompleted)
                 {
                     try
@@ -376,7 +376,7 @@ namespace DeepSeek
                     }
                     catch { }
                 }
-                
+
                 if (errorReadTask != null && !errorReadTask.IsCompleted)
                 {
                     try
@@ -389,7 +389,7 @@ namespace DeepSeek
                     }
                     catch { }
                 }
-                
+
                 CleanupResources();
             }
             catch (Exception ex)
@@ -397,10 +397,10 @@ namespace DeepSeek
                 UnityEngine.Debug.LogError($"停止Python服务异常: {ex.Message}");
                 CleanupResources();
             }
-            
+
             UnityEngine.Debug.Log("Python服务已停止");
         }
-        
+
         /// <summary>
         /// 清理所有资源
         /// </summary>
@@ -412,43 +412,43 @@ namespace DeepSeek
                 cancellationTokenSource = null;
             }
             catch { }
-            
+
             try
             {
                 processStdin?.Dispose();
                 processStdin = null;
             }
             catch { }
-            
+
             try
             {
                 processStdout?.Dispose();
                 processStdout = null;
             }
             catch { }
-            
+
             try
             {
                 processStderr?.Dispose();
                 processStderr = null;
             }
             catch { }
-            
+
             try
             {
                 pythonProcess?.Dispose();
                 pythonProcess = null;
             }
             catch { }
-            
+
             outputReadTask = null;
             errorReadTask = null;
         }
-        
+
         #endregion
-        
+
         #region 异步读取输出
-        
+
         /// <summary>
         /// 异步读取标准输出
         /// </summary>
@@ -456,28 +456,28 @@ namespace DeepSeek
         {
             char[] buffer = new char[4096];
             StringBuilder messageBuilder = new StringBuilder();
-            
+
             while (!token.IsCancellationRequested && processStdout != null)
             {
                 try
                 {
                     var readTask = processStdout.ReadAsync(buffer, 0, buffer.Length);
                     var completedTask = await Task.WhenAny(readTask, Task.Delay(-1, token));
-                    
+
                     if (completedTask == readTask)
                     {
                         int read = await readTask;
                         if (read > 0)
                         {
                             string content = new string(buffer, 0, read);
-                            
+
                             foreach (char c in content)
                             {
                                 if (c == '\n')
                                 {
                                     string line = messageBuilder.ToString().Trim();
                                     messageBuilder.Clear();
-                                    
+
                                     if (!string.IsNullOrEmpty(line))
                                     {
                                         ProcessOutputLine(line);
@@ -514,7 +514,7 @@ namespace DeepSeek
                 }
             }
         }
-        
+
         /// <summary>
         /// 异步读取标准错误
         /// </summary>
@@ -526,7 +526,7 @@ namespace DeepSeek
                 {
                     var readTask = processStderr.ReadLineAsync();
                     var completedTask = await Task.WhenAny(readTask, Task.Delay(-1, token));
-                    
+
                     if (completedTask == readTask)
                     {
                         string line = await readTask;
@@ -555,11 +555,11 @@ namespace DeepSeek
                 }
             }
         }
-        
+
         #endregion
-        
+
         #region 消息处理
-        
+
         /// <summary>
         /// 处理输出行
         /// </summary>
@@ -569,7 +569,7 @@ namespace DeepSeek
             {
                 UnityEngine.Debug.Log($"Python输出: {line}");
             }
-            
+
             try
             {
                 var response = JsonConvert.DeserializeObject<PythonResponse>(line);
@@ -586,7 +586,7 @@ namespace DeepSeek
                 // 非JSON格式的输出，可能是日志信息
             }
         }
-        
+
         /// <summary>
         /// 检查输出文件
         /// </summary>
@@ -595,9 +595,9 @@ namespace DeepSeek
             string projectRoot = Application.dataPath;
             projectRoot = projectRoot.Substring(0, projectRoot.LastIndexOf("/Assets"));
             string fullOutputPath = Path.Combine(projectRoot, outputFilePath);
-            
+
             if (!File.Exists(fullOutputPath)) return;
-            
+
             try
             {
                 string content = File.ReadAllText(fullOutputPath, Encoding.UTF8);
@@ -605,7 +605,7 @@ namespace DeepSeek
                 {
                     ProcessOutputLine(content);
                 }
-                
+
                 File.Delete(fullOutputPath);
             }
             catch (Exception ex)
@@ -613,7 +613,7 @@ namespace DeepSeek
                 UnityEngine.Debug.LogWarning($"读取输出文件出错: {ex.Message}");
             }
         }
-        
+
         /// <summary>
         /// 发送请求到Python
         /// </summary>
@@ -624,16 +624,16 @@ namespace DeepSeek
                 UnityEngine.Debug.LogError("Python服务未运行");
                 return false;
             }
-            
+
             try
             {
                 string json = JsonConvert.SerializeObject(request, Formatting.None);
-                
+
                 if (logMessages)
                 {
                     UnityEngine.Debug.Log($"发送到Python: {json}");
                 }
-                
+
                 if (mode == CommunicationMode.StdInOut)
                 {
                     processStdin.WriteLine(json);
@@ -644,10 +644,10 @@ namespace DeepSeek
                     string projectRoot = Application.dataPath;
                     projectRoot = projectRoot.Substring(0, projectRoot.LastIndexOf("/Assets"));
                     string fullInputPath = Path.Combine(projectRoot, inputFilePath);
-                    
+
                     File.WriteAllText(fullInputPath, json, Encoding.UTF8);
                 }
-                
+
                 return true;
             }
             catch (Exception ex)
@@ -657,11 +657,11 @@ namespace DeepSeek
                 return false;
             }
         }
-        
+
         #endregion
-        
+
         #region 便捷方法
-        
+
         /// <summary>
         /// 发送心跳
         /// </summary>
@@ -673,7 +673,7 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         /// <summary>
         /// 分析意图
         /// </summary>
@@ -687,7 +687,7 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         /// <summary>
         /// 记录事件
         /// </summary>
@@ -702,7 +702,7 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         /// <summary>
         /// 获取统计数据
         /// </summary>
@@ -714,7 +714,7 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         /// <summary>
         /// 生成报告
         /// </summary>
@@ -726,7 +726,7 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         /// <summary>
         /// 结束会话
         /// </summary>
@@ -738,12 +738,12 @@ namespace DeepSeek
             };
             SendRequest(request);
         }
-        
+
         #endregion
     }
-    
+
     #region 数据模型
-    
+
     /// <summary>
     /// 发送给Python的请求
     /// </summary>
@@ -758,7 +758,7 @@ namespace DeepSeek
         public string format { get; set; }
         public string session_id { get; set; }
     }
-    
+
     /// <summary>
     /// Python返回的响应
     /// </summary>
@@ -769,7 +769,7 @@ namespace DeepSeek
         public Dictionary<string, object> data { get; set; }
         public string error { get; set; }
         public double timestamp { get; set; }
-        
+
         /// <summary>
         /// 获取指定类型的数据
         /// </summary>
@@ -779,7 +779,7 @@ namespace DeepSeek
             return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(data));
         }
     }
-    
+
     /// <summary>
     /// 统计数据模型
     /// </summary>
@@ -796,7 +796,7 @@ namespace DeepSeek
         public bool should_trigger_feedback { get; set; }
         public Dictionary<string, Dictionary<string, int>> scene_stats { get; set; }
     }
-    
+
     /// <summary>
     /// 意图分析结果
     /// </summary>
@@ -807,11 +807,11 @@ namespace DeepSeek
         public double confidence { get; set; }
         public string raw_text { get; set; }
     }
-    
+
     #endregion
-    
+
     #region Unity主线程调度器
-    
+
     /// <summary>
     /// Unity主线程调度器
     /// 用于在非主线程回调中执行Unity API
@@ -819,13 +819,13 @@ namespace DeepSeek
     public static class UnityMainThreadDispatcher
     {
         private static readonly Queue<Action> actionQueue = new Queue<Action>();
-        
+
         [RuntimeInitializeOnLoadMethod]
         private static void Initialize()
         {
             UnityMainThreadDispatcherBehaviour.Create();
         }
-        
+
         /// <summary>
         /// 将操作排入主线程执行
         /// </summary>
@@ -836,7 +836,7 @@ namespace DeepSeek
                 actionQueue.Enqueue(action);
             }
         }
-        
+
         /// <summary>
         /// 尝试出队一个操作
         /// </summary>
@@ -854,14 +854,14 @@ namespace DeepSeek
             }
         }
     }
-    
+
     /// <summary>
     /// Unity主线程调度器行为
     /// </summary>
     public class UnityMainThreadDispatcherBehaviour : MonoBehaviour
     {
         private static UnityMainThreadDispatcherBehaviour instance;
-        
+
         public static void Create()
         {
             if (instance == null)
@@ -871,7 +871,7 @@ namespace DeepSeek
                 DontDestroyOnLoad(obj);
             }
         }
-        
+
         private void Update()
         {
             while (UnityMainThreadDispatcher.TryDequeue(out Action action))
@@ -887,6 +887,6 @@ namespace DeepSeek
             }
         }
     }
-    
+
     #endregion
 }

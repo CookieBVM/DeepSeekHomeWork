@@ -65,14 +65,16 @@ namespace DeepSeek.DigitalHuman
 
             if (system != null)
             {
-                system.AddComponent<DigitalHumanStatsLogger>();
+                // Only add if not already present
+                if (system.GetComponent<DigitalHumanStatsLogger>() == null)
+                {
+                    system.AddComponent<DigitalHumanStatsLogger>();
+                    Debug.Log("[DigitalHumanStatsBootstrap] Added StatsLogger to DigitalHumanSystem");
+                }
             }
             else
             {
-                var go = new GameObject("PythonBridgeSystem");
-                DontDestroyOnLoad(go);
-                go.AddComponent<DigitalHumanStatsLogger>();
-                Debug.Log("[DigitalHumanStatsBootstrap] No DigitalHumanSystem found, created standalone PythonBridgeSystem");
+                Debug.Log("[DigitalHumanStatsBootstrap] No DigitalHumanSystem found in scene, stats disabled");
             }
 
             initialized = true;
