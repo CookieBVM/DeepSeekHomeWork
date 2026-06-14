@@ -18,7 +18,7 @@ namespace DeepSeek.DigitalHuman
         [Header("外部模型")]
         [SerializeField] private GameObject avatarPrefab;
         [SerializeField] private string resourcesAvatarPath = "DigitalHuman/Avatar";
-        [SerializeField] private Vector3 externalAvatarLocalPosition = new Vector3(0f, -0.6f, 0.5f);
+        [SerializeField] private Vector3 externalAvatarLocalPosition = new Vector3(0f, -0.6f, 200f);
         [SerializeField] private Vector3 externalAvatarLocalEuler = new Vector3(0f, 180f, 0f);
         [SerializeField] private float externalAvatarScale = 1.2f;
 
@@ -131,7 +131,7 @@ namespace DeepSeek.DigitalHuman
             // 相机从正面拍摄模型，完整显示在viewport中
             GameObject cameraObject = new GameObject("AvatarCamera");
             cameraObject.transform.SetParent(sceneRoot, false);
-            cameraObject.transform.localPosition = new Vector3(0f, -0.2f, 3.8f);
+            cameraObject.transform.localPosition = new Vector3(0f, 77f, 67f);
             cameraObject.transform.localRotation = Quaternion.Euler(5f, 0f, 0f);
             avatarCamera = cameraObject.AddComponent<Camera>();
             avatarCamera.targetTexture = renderTexture;
