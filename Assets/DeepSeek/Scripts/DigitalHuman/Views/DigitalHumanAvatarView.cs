@@ -131,13 +131,13 @@ namespace DeepSeek.DigitalHuman
             // 相机从正面拍摄模型，完整显示在viewport中
             GameObject cameraObject = new GameObject("AvatarCamera");
             cameraObject.transform.SetParent(sceneRoot, false);
-            cameraObject.transform.localPosition = new Vector3(0f, 0.0f, 3.0f);
-            cameraObject.transform.localRotation = Quaternion.Euler(-10f, 0f, 0f);
+            cameraObject.transform.localPosition = new Vector3(0f, -0.2f, 3.8f);
+            cameraObject.transform.localRotation = Quaternion.Euler(-5f, 0f, 0f);
             avatarCamera = cameraObject.AddComponent<Camera>();
             avatarCamera.targetTexture = renderTexture;
             avatarCamera.clearFlags = CameraClearFlags.SolidColor;
             avatarCamera.backgroundColor = new Color32(230, 240, 252, 255);
-            avatarCamera.fieldOfView = 50f;
+            avatarCamera.fieldOfView = 60f;
             avatarCamera.nearClipPlane = 0.05f;
             avatarCamera.farClipPlane = 20f;
 
