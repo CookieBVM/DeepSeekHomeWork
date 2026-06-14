@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DeepSeek.DigitalHuman
@@ -95,14 +95,12 @@ namespace DeepSeek.DigitalHuman
 
             if (response.TriggerReward)
             {
-                DigitalHumanEventBus.PublishCustomAnimation("Standing_Clap");
                 DigitalHumanEventBus.PublishReward("做得真好！", 1.6f);
             }
 
             if (response.TaskCompleted)
             {
-                DigitalHumanEventBus.PublishCustomAnimation("Cheering");
-                dataTracker?.MarkTaskCompleted("涔拌彍瀵硅瘽娴佺▼瀹屾垚");
+                dataTracker?.MarkTaskCompleted("买菜对话流程完成");
                 dataTracker?.EndSession();
                 DigitalHumanEventBus.PublishTaskCompleted(DigitalHumanModule.InterpersonalCommunication, ScenarioId);
             }
@@ -111,8 +109,3 @@ namespace DeepSeek.DigitalHuman
         }
     }
 }
-
-
-
-
-

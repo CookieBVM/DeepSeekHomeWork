@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace DeepSeek.DigitalHuman
@@ -15,13 +15,6 @@ namespace DeepSeek.DigitalHuman
         public static event Action<DigitalHumanSessionRecord> SessionUpdated;
         public static event Action<DigitalHumanSessionRecord> SessionEnded;
         public static event Action<DigitalHumanInteractionRecord> InteractionRecorded;
-        public static event Action<string> AvatarCustomAnimationRequested;
-
-        public static void PublishCustomAnimation(string animationName)
-        {
-            AvatarCustomAnimationRequested?.Invoke(animationName);
-        }
-
 
         public static void PublishModuleChanged(DigitalHumanModule module)
         {
@@ -66,4 +59,3 @@ namespace DeepSeek.DigitalHuman
         }
     }
 }
-

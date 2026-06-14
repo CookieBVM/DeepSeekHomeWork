@@ -1,8 +1,0 @@
-Higokumaru Transform Hierarchy
-Assets/External/DigitalHuman/Higokumaru/source/Higokumaru.fbx
-
-Higokumaru
-  Body_Backup.002
-  Body_Backup.003
-  Body_Backup.004
-  Body_Backup.005

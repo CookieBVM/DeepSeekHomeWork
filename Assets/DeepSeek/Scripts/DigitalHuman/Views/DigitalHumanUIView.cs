@@ -111,6 +111,7 @@ namespace DeepSeek.DigitalHuman
             ClearColoringButtons();
             if (areas == null)
             {
+                Debug.LogWarning("[DigitalHumanUIView] RenderColoringAreas called with null areas");
                 return;
             }
 
@@ -121,11 +122,13 @@ namespace DeepSeek.DigitalHuman
 
             if (HasSceneColoringButtons())
             {
+                Debug.Log($"[DigitalHumanUIView] Using scene coloring buttons. Count: {coloringAreaButtons.Length}");
                 for (int i = 0; i < coloringAreaButtons.Length; i++)
                 {
                     Button button = coloringAreaButtons[i];
                     if (button == null)
                     {
+                        Debug.LogWarning($"[DigitalHumanUIView] Scene coloring button[{i}] is NULL");
                         continue;
                     }
 
@@ -155,6 +158,7 @@ namespace DeepSeek.DigitalHuman
                 return;
             }
 
+            Debug.Log($"[DigitalHumanUIView] Creating dynamic coloring buttons. Count: {areas.Count}");
             for (int i = 0; i < areas.Count; i++)
             {
                 DigitalHumanColoringArea area = areas[i];
@@ -664,9 +668,11 @@ namespace DeepSeek.DigitalHuman
         {
             if (button == null)
             {
+                Debug.LogError($"[DigitalHumanUIView] Module button for {module} is NULL! Did you rebuild the scene? Please go to Tools > Digital Human > Rebuild SampleScene UGUI");
                 return;
             }
 
+            Debug.Log($"[DigitalHumanUIView] Registering module button for {module}: {button.name}");
             moduleButtons[module] = button;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => ModuleRequested?.Invoke(module));
@@ -676,9 +682,11 @@ namespace DeepSeek.DigitalHuman
         {
             if (button == null)
             {
+                Debug.LogError($"[DigitalHumanUIView] Difficulty button for {difficulty} is NULL! Did you rebuild the scene?");
                 return;
             }
 
+            Debug.Log($"[DigitalHumanUIView] Registering difficulty button for {difficulty}: {button.name}");
             difficultyButtons[difficulty] = button;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => DifficultyRequested?.Invoke(difficulty));

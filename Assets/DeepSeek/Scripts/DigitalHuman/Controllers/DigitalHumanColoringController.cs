@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,8 +54,8 @@ namespace DeepSeek.DigitalHuman
             if (!participantMatches || !areaMatches)
             {
                 string turnName = current.requiredParticipant == DigitalHumanParticipant.Child
-                    ? "瀹濆疂"
-                    : "鐖哥埜濡堝";
+                    ? "宝宝"
+                    : "爸爸妈妈";
                 string line = $"我们慢慢来，现在请{turnName}点击{current.displayName}。";
                 var retryResponse = DigitalHumanResponse.Say(
                     DigitalHumanModule.ParentChildColoring,
@@ -80,7 +80,7 @@ namespace DeepSeek.DigitalHuman
             current.completed = true;
             var correctResponse = DigitalHumanResponse.Say(
                 DigitalHumanModule.ParentChildColoring,
-                $"{current.displayName}瀹屾垚鍟︼紒",
+                $"{current.displayName}完成啦！",
                 DigitalHumanAvatarPose.ColorPrompt,
                 DigitalHumanEmotion.Encouraging,
                 isCorrect: true,
@@ -94,7 +94,6 @@ namespace DeepSeek.DigitalHuman
                 areaId,
                 correctResponse);
 
-            DigitalHumanEventBus.PublishCustomAnimation("Standing_Clap");
             DigitalHumanEventBus.PublishReward("涂色成功！", 1.6f);
             currentAreaIndex++;
 
@@ -105,7 +104,7 @@ namespace DeepSeek.DigitalHuman
             }
 
             DigitalHumanColoringArea next = CurrentArea;
-            string nextName = next.requiredParticipant == DigitalHumanParticipant.Child ? "瀹濆疂" : "鐖哥埜濡堝";
+            string nextName = next.requiredParticipant == DigitalHumanParticipant.Child ? "宝宝" : "爸爸妈妈";
             PublishPrompt($"接下来请{nextName}点击{next.displayName}。", false);
             ColoringStateChanged?.Invoke(areas, currentAreaIndex);
         }
@@ -122,7 +121,7 @@ namespace DeepSeek.DigitalHuman
                 taskCompleted: true,
                 scenarioFinished: true);
 
-            dataTracker?.MarkTaskCompleted("浜插瓙鍚堜綔娑傝壊瀹屾垚");
+            dataTracker?.MarkTaskCompleted("亲子合作涂色完成");
             dataTracker?.RecordInteraction(
                 DigitalHumanModule.ParentChildColoring,
                 "cooperative_coloring",
@@ -132,7 +131,6 @@ namespace DeepSeek.DigitalHuman
                 response);
             dataTracker?.EndSession();
 
-            DigitalHumanEventBus.PublishCustomAnimation("Cheering");
             DigitalHumanEventBus.PublishReward("完成啦！", 10f);
             DigitalHumanEventBus.PublishResponse(response);
             DigitalHumanEventBus.PublishTaskCompleted(DigitalHumanModule.ParentChildColoring, "cooperative_coloring");
@@ -153,6 +151,3 @@ namespace DeepSeek.DigitalHuman
         }
     }
 }
-
-
-
