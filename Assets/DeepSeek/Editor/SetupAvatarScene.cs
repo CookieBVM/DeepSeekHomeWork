@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+?using UnityEngine;
 using UnityEditor;
 
 public class SetupAvatarScene : EditorWindow
@@ -86,7 +86,7 @@ public class SetupAvatarScene : EditorWindow
             GameObject avatarInstance = PrefabUtility.InstantiatePrefab(avatarModel) as GameObject;
             avatarInstance.name = "RuntimeDigitalHumanAvatar";
             avatarInstance.transform.SetParent(sceneRoot.transform, false);
-            avatarInstance.transform.localPosition = new Vector3(0f, -0.6f, 0f);
+            avatarInstance.transform.localPosition = new Vector3(0f, -0.6f, 0.5f);
             avatarInstance.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
             avatarInstance.transform.localScale = Vector3.one * 1.2f;
 
