@@ -2410,10 +2410,9 @@ MonoBehaviour:
   textureSize: 768
   avatarPrefab: {fileID: 0}
   resourcesAvatarPath: DigitalHuman/Avatar
-  externalAvatarLocalPosition: {x: 0, y: -0.5, z: 0.35}
+  externalAvatarLocalPosition: {x: 0, y: -0.6, z: 0.5}
   externalAvatarLocalEuler: {x: 0, y: 180, z: 0}
-  externalAvatarScale: 0.85
-  poseBlendSeconds: 0.28
+  externalAvatarScale: 1.2
 --- !u!114 &719563151
 MonoBehaviour:
   m_ObjectHideFlags: 0
