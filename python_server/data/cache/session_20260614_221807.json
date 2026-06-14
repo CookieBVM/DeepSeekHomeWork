@@ -1,0 +1,117 @@
+{
+  "session_id": "session_20260614_221807",
+  "events": [
+    {
+      "event_id": "evt_1781446694640_0",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "tomato",
+        "response": "给你西红柿！",
+        "is_correct": true,
+        "elapsed_seconds": 7.33711863,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781446694.640233,
+      "session_id": "session_20260614_221807",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446696411_1",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 7.3371253
+      },
+      "timestamp": 1781446696.4110575,
+      "session_id": "session_20260614_221807",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446696415_2",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "finish",
+        "response": "完成啦，你们太厉害啦！",
+        "is_correct": true,
+        "elapsed_seconds": 9.116221,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781446696.4150858,
+      "session_id": "session_20260614_221807",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446696437_3",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 9.116222
+      },
+      "timestamp": 1781446696.4377666,
+      "session_id": "session_20260614_221807",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446697496_4",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "00b1d25939f94264b7197b14168a1361",
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 1,
+        "total_duration_seconds": 9.123599
+      },
+      "timestamp": 1781446697.4966505,
+      "session_id": "session_20260614_221807",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260614_221807",
+    "start_time": 1781446687.4195108,
+    "end_time": null,
+    "total_events": 5,
+    "correct_events": 2,
+    "wrong_events": 0,
+    "consecutive_correct": 2,
+    "max_consecutive_correct": 2,
+    "total_duration": 10.077139616012573,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 2,
+        "wrong": 0,
+        "total": 5
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781446697.4966505
+}

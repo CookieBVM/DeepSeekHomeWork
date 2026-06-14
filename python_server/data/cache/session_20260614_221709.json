@@ -1,0 +1,208 @@
+{
+  "session_id": "session_20260614_221709",
+  "events": [
+    {
+      "event_id": "evt_1781446643681_0",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 12.21562
+      },
+      "timestamp": 1781446643.6816547,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446669423_1",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-14T22:17:23.6720781+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781446669.4231622,
+      "session_id": "session_20260614_221709",
+      "context": "system",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446669431_2",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "help",
+        "response": "当然可以，和爸爸妈妈一起说会更轻松。",
+        "is_correct": true,
+        "elapsed_seconds": 39.82143,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781446669.4316926,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446669627_3",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 39.82143
+      },
+      "timestamp": 1781446669.6271436,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446669631_4",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "help",
+        "response": "当然可以，和爸爸妈妈一起说会更轻松。",
+        "is_correct": true,
+        "elapsed_seconds": 40.0258179,
+        "consecutive_correct": 3,
+        "max_consecutive_correct": 3
+      },
+      "timestamp": 1781446669.6316543,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446669791_5",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 3,
+        "correct": 3,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 3,
+        "completed_tasks": 0,
+        "duration_seconds": 40.0258179
+      },
+      "timestamp": 1781446669.791002,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446669795_6",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "help",
+        "response": "当然可以，和爸爸妈妈一起说会更轻松。",
+        "is_correct": true,
+        "elapsed_seconds": 40.1901779,
+        "consecutive_correct": 4,
+        "max_consecutive_correct": 4
+      },
+      "timestamp": 1781446669.7950137,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446670781_7",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 4,
+        "correct": 4,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 4,
+        "completed_tasks": 0,
+        "duration_seconds": 40.1901779
+      },
+      "timestamp": 1781446670.7816584,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781446670788_8",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "finish",
+        "response": "完成啦，你们太厉害啦！",
+        "is_correct": true,
+        "elapsed_seconds": 41.18077,
+        "consecutive_correct": 5,
+        "max_consecutive_correct": 5
+      },
+      "timestamp": 1781446670.7882202,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781446670811_9",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 5,
+        "correct": 5,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 5,
+        "completed_tasks": 0,
+        "duration_seconds": 41.18077
+      },
+      "timestamp": 1781446670.8113785,
+      "session_id": "session_20260614_221709",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260614_221709",
+    "start_time": 1781446629.7410717,
+    "end_time": null,
+    "total_events": 10,
+    "correct_events": 4,
+    "wrong_events": 0,
+    "consecutive_correct": 4,
+    "max_consecutive_correct": 4,
+    "total_duration": 41.0703067779541,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 4,
+        "wrong": 0,
+        "total": 9
+      },
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781446670.812379
+}
