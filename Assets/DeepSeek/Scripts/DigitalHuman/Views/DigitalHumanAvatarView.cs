@@ -132,14 +132,14 @@ namespace DeepSeek.DigitalHuman
             GameObject cameraObject = new GameObject("AvatarCamera");
             cameraObject.transform.SetParent(sceneRoot, false);
             cameraObject.transform.localPosition = new Vector3(0f, -0.2f, 3.8f);
-            cameraObject.transform.localRotation = Quaternion.Euler(-5f, 0f, 0f);
+            cameraObject.transform.localRotation = Quaternion.Euler(5f, 0f, 0f);
             avatarCamera = cameraObject.AddComponent<Camera>();
             avatarCamera.targetTexture = renderTexture;
             avatarCamera.clearFlags = CameraClearFlags.SolidColor;
             avatarCamera.backgroundColor = new Color32(230, 240, 252, 255);
             avatarCamera.fieldOfView = 60f;
             avatarCamera.nearClipPlane = 0.05f;
-            avatarCamera.farClipPlane = 20f;
+            avatarCamera.farClipPlane = 200f;
 
             // 主方向光
             GameObject keyLight = new GameObject("AvatarKeyLight");

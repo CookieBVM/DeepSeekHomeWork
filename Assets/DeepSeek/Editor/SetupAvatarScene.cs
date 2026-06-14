@@ -54,14 +54,14 @@ public class SetupAvatarScene : EditorWindow
         GameObject cameraObj = new GameObject("AvatarCamera");
         cameraObj.transform.SetParent(sceneRoot.transform, false);
         cameraObj.transform.localPosition = new Vector3(0f, -0.2f, 3.8f);
-        cameraObj.transform.localRotation = Quaternion.Euler(-5f, 0f, 0f);
+        cameraObj.transform.localRotation = Quaternion.Euler(5f, 0f, 0f);
 
         Camera camera = cameraObj.AddComponent<Camera>();
         camera.clearFlags = CameraClearFlags.SolidColor;
         camera.backgroundColor = new Color32(230, 240, 252, 255);
         camera.fieldOfView = 60f;
         camera.nearClipPlane = 0.05f;
-        camera.farClipPlane = 20f;
+        camera.farClipPlane = 200f;
 
         GameObject keyLight = new GameObject("AvatarKeyLight");
         keyLight.transform.SetParent(sceneRoot.transform, false);
