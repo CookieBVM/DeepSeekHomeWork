@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -74,13 +74,18 @@ namespace DeepSeek.DigitalHuman
             DigitalHumanEventBus.ModuleChanged -= OnModuleChanged;
         }
 
-        private void EnsurePythonBridge()
+            private void EnsurePythonBridge()
         {
             pythonBridge = FindObjectOfType<PythonBridge>();
             if (pythonBridge == null)
             {
                 var go = new GameObject("PythonBridge");
                 pythonBridge = go.AddComponent<PythonBridge>();
+                Debug.Log("[StatsLogger] Created new PythonBridge GameObject");
+            }
+            else
+            {
+                Debug.Log("[StatsLogger] Found existing PythonBridge");
             }
 
             pythonBridge.OnResponseReceived += OnPythonResponse;
@@ -89,10 +94,36 @@ namespace DeepSeek.DigitalHuman
             if (autoStartPython)
             {
                 pythonBridge.StartPython();
+                Debug.Log("[StatsLogger] Called StartPython, IsRunning=" + pythonBridge.IsRunning);
+                
+                // Test communication after a short delay
+                StartCoroutine(TestPythonConnection());
             }
         }
 
-        private void OnSessionStarted(DigitalHumanSessionRecord session)
+        private System.Collections.IEnumerator TestPythonConnection()
+        {
+            yield return new WaitForSeconds(2f);
+            if (pythonBridge != null && pythonBridge.IsRunning)
+            {
+                Debug.Log("[StatsLogger] Python is running, sending test ping...");
+                pythonBridge.Ping();
+                
+                yield return new WaitForSeconds(1f);
+                var testData = new Dictionary<string, object>
+                {
+                    { "test", true },
+                    { "timestamp", System.DateTime.Now.ToString("o") },
+                    { "source", "Unity_DigitalHumanStatsLogger" }
+                };
+                pythonBridge.LogEvent("unity_startup_test", testData, "system");
+                Debug.Log("[StatsLogger] Test data sent to Python");
+            }
+            else
+            {
+                Debug.LogWarning("[StatsLogger] Python NOT running, cannot send test data. IsRunning=" + (pythonBridge?.IsRunning ?? false));
+            }
+        }private void OnSessionStarted(DigitalHumanSessionRecord session)
         {
             Debug.Log($"🔍 DigitalHumanStatsLogger.OnSessionStarted 被调用, logToConsole={logToConsole}");
             if (!logToConsole)
