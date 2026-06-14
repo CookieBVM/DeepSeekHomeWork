@@ -191,7 +191,7 @@ namespace DeepSeek
                 monitorProcess.StartInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/c start \"Python实时统计监视器\" python \"{monitorFullPath}\" \"{logFullPath}\"",
+                    Arguments = $"/c start \"Python实时统计监视器\" \"C:\python\python.exe\" \"{monitorFullPath}\" \"{logFullPath}\"",
                     UseShellExecute = true,
                     CreateNoWindow = false,
                     WorkingDirectory = Path.GetDirectoryName(monitorFullPath)
@@ -211,42 +211,46 @@ namespace DeepSeek
         /// 启动标准输入输出模式的Python进程
         /// </summary>
 
-                private string ResolvePythonPath()
+                                private string ResolvePythonPath()
         {
             if (!string.IsNullOrEmpty(pythonExePath) && System.IO.File.Exists(pythonExePath))
                 return pythonExePath;
 
-            string[] fixedPaths = {
-                @"C:\WINDOWS\py.exe",
-                @"C:\Windows\py.exe",
+            string[] priorityPaths = {
+                @"C:\python\python.exe",
                 @"C:\Python3\python.exe",
                 @"C:\Python\python.exe",
                 @"C:\Python311\python.exe",
                 @"C:\Python312\python.exe",
-                @"C:\Python313\python.exe"
+                @"C:\Python313\python.exe",
             };
-            foreach (var p in fixedPaths) if (System.IO.File.Exists(p)) return p;
+            foreach (var p in priorityPaths) if (System.IO.File.Exists(p)) return p;
 
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            try { var found = System.IO.Directory.GetFiles(appData + "\\Programs\\Python", "python.exe", System.IO.SearchOption.AllDirectories); if (found.Length > 0) return found[0]; } catch { }
-
-            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            try { var dirs = System.IO.Directory.GetDirectories(programFiles, "Python*"); foreach (var d in dirs) { string exe = System.IO.Path.Combine(d, "python.exe"); if (System.IO.File.Exists(exe)) return exe; } } catch { }
-
-            string[] pathDirs = (Environment.GetEnvironmentVariable("PATH") ?? "").Split(';');
-            foreach (var dir in pathDirs)
+            try
             {
-                string exe = System.IO.Path.Combine(dir.Trim(), "py.exe");
-                if (System.IO.File.Exists(exe)) return exe;
-                exe = System.IO.Path.Combine(dir.Trim(), "python.exe");
+                var found = System.IO.Directory.GetFiles(
+                    appData + @"\Programs\Python", "python.exe",
+                    System.IO.SearchOption.AllDirectories);
+                if (found.Length > 0) return found[0];
+            }
+            catch { }
+
+            var pathEnv = Environment.GetEnvironmentVariable("PATH") ?? "";
+            foreach (var dir in pathEnv.Split(';'))
+            {
+                var d = dir.Trim();
+                if (string.IsNullOrEmpty(d)) continue;
+                var exe = System.IO.Path.Combine(d, "python.exe");
                 if (System.IO.File.Exists(exe)) return exe;
             }
 
-            return pythonExePath;
+            if (System.IO.File.Exists(@"C:\WINDOWS\py.exe"))
+                return @"C:\WINDOWS\py.exe";
+
+            return @"C:\python\python.exe";
         }
-
-
-private void StartStdInOutProcess(string scriptPath)
+        private void StartStdInOutProcess(string scriptPath)
         {
             cancellationTokenSource = new CancellationTokenSource();
             
