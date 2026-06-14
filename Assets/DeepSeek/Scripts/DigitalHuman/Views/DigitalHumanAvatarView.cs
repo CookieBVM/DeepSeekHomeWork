@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +17,9 @@ namespace DeepSeek.DigitalHuman
         [Header("外部模型")]
         [SerializeField] private GameObject avatarPrefab;
         [SerializeField] private string resourcesAvatarPath = "DigitalHuman/Avatar";
-        [SerializeField] private Vector3 externalAvatarLocalPosition = new Vector3(0f, -0.55f, 0.3f);
+        [SerializeField] private Vector3 externalAvatarLocalPosition = new Vector3(0f, -0.5f, 0.35f);
         [SerializeField] private Vector3 externalAvatarLocalEuler = new Vector3(0f, 180f, 0f);
-        [SerializeField] private float externalAvatarScale = 0.9f;
+        [SerializeField] private float externalAvatarScale = 0.85f;
 
         [Header("姿态动画")]
         [SerializeField] private float poseBlendSeconds = 0.28f;
@@ -429,13 +429,13 @@ namespace DeepSeek.DigitalHuman
             // 相机位置：对准模型，让角色完整显示在viewport中
             GameObject cameraObject = new GameObject("AvatarCamera");
             cameraObject.transform.SetParent(sceneRoot, false);
-            cameraObject.transform.localPosition = new Vector3(0f, 0.75f, -2.4f);
+            cameraObject.transform.localPosition = new Vector3(0f, 0.7f, -2.8f);
             cameraObject.transform.localRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             avatarCamera = cameraObject.AddComponent<Camera>();
             avatarCamera.targetTexture = renderTexture;
             avatarCamera.clearFlags = CameraClearFlags.SolidColor;
             avatarCamera.backgroundColor = new Color32(230, 240, 252, 255);
-            avatarCamera.fieldOfView = 30f;
+            avatarCamera.fieldOfView = 38f;
             avatarCamera.nearClipPlane = 0.05f;
             avatarCamera.farClipPlane = 20f;
 
