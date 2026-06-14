@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -21,7 +21,7 @@ namespace DeepSeek
     {
         [Header("Python配置")]
         [SerializeField] private string pythonScriptPath = "python_server/main.py";
-        [SerializeField] private string pythonExePath = "python.exe";
+        [SerializeField] private string pythonExePath = "py";
         
         [Header("通信模式")]
         [SerializeField] private CommunicationMode mode = CommunicationMode.StdInOut;
@@ -210,6 +210,23 @@ namespace DeepSeek
         /// <summary>
         /// 启动标准输入输出模式的Python进程
         /// </summary>
+
+        private string ResolvePythonPath()
+        {
+            if (!string.IsNullOrEmpty(pythonExePath) && System.IO.File.Exists(pythonExePath))
+                return pythonExePath;
+            string[] candidates = { "py", "python3", "python", "python.exe" };
+            foreach (var c in candidates)
+            {
+                try { var p = new System.Diagnostics.Process { StartInfo = new System.Diagnostics.ProcessStartInfo { FileName = c, Arguments = "--version", UseShellExecute = false, RedirectStandardOutput = true, CreateNoWindow = true } }; p.Start(); p.WaitForExit(3000); if (p.ExitCode == 0) return c; }
+                catch { }
+            }
+            string[] paths = { @"C:\WINDOWS\py.exe", @"C:\Windows\py.exe" };
+            foreach (var p in paths) if (System.IO.File.Exists(p)) return p;
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            try { var found = System.IO.Directory.GetFiles(appData + "\\Programs\\Python", "python.exe", System.IO.SearchOption.AllDirectories); if (found.Length > 0) return found[0]; } catch { }
+            return pythonExePath;
+        }
         private void StartStdInOutProcess(string scriptPath)
         {
             cancellationTokenSource = new CancellationTokenSource();
@@ -217,7 +234,7 @@ namespace DeepSeek
             pythonProcess = new Process();
             pythonProcess.StartInfo = new ProcessStartInfo
             {
-                FileName = pythonExePath,
+                FileName = ResolvePythonPath(),
                 Arguments = $"\"{scriptPath}\"",
                 UseShellExecute = false,
                 RedirectStandardInput = true,
@@ -256,7 +273,7 @@ namespace DeepSeek
             pythonProcess = new Process();
             pythonProcess.StartInfo = new ProcessStartInfo
             {
-                FileName = pythonExePath,
+                FileName = ResolvePythonPath(),
                 Arguments = $"\"{scriptPath}\"",
                 UseShellExecute = false,
                 CreateNoWindow = true,
