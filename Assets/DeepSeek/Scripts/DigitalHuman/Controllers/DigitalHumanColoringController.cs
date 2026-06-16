@@ -36,7 +36,12 @@ namespace DeepSeek.DigitalHuman
                 difficulty);
 
             DigitalHumanEventBus.PublishModuleChanged(DigitalHumanModule.ParentChildColoring);
-            PublishPrompt("现在和爸爸妈妈一起完成涂色吧。宝宝先点击红色区域。", false);
+            DigitalHumanEventBus.PublishResponse(DigitalHumanResponse.Say(
+                DigitalHumanModule.ParentChildColoring,
+                "现在和爸爸妈妈一起完成涂色吧。宝宝先点击红色区域。",
+                DigitalHumanAvatarPose.Greeting,
+                DigitalHumanEmotion.Friendly,
+                isCorrect: true));
             ColoringStateChanged?.Invoke(areas, currentAreaIndex);
         }
 

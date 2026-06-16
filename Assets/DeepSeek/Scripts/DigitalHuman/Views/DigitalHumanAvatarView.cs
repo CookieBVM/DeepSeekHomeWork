@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +6,8 @@ using UnityEngine.UI;
 namespace DeepSeek.DigitalHuman
 {
     /// <summary>
-    /// 数字人形象视图 - 通过RenderTexture将3D模型渲染到UI RawImage
-    /// Ch46模型 + Animator驱动的动画系统
+    /// 数字人形象视图 - 通过Animator Controller的Trigger参数驱动动画
+    /// 使用model分支的Humanoid + AvatarController策略
     /// </summary>
     public class DigitalHumanAvatarView : MonoBehaviour
     {
@@ -26,6 +26,7 @@ namespace DeepSeek.DigitalHuman
         private Camera avatarCamera;
         private Transform sceneRoot;
         private Transform modelRoot;
+        private Animator avatarAnimator;
 
         private void Awake()
         {
@@ -71,10 +72,7 @@ namespace DeepSeek.DigitalHuman
 
         private void EnsureAvatarScene()
         {
-            if (sceneRoot != null)
-            {
-                return;
-            }
+            if (sceneRoot != null) return;
 
             sceneRoot = new GameObject("DigitalHumanAvatarScene").transform;
             sceneRoot.SetParent(transform, false);
@@ -99,7 +97,7 @@ namespace DeepSeek.DigitalHuman
 
             if (prefab == null)
             {
-                Debug.LogWarning("[DigitalHumanAvatarView] No avatar prefab found. Please assign one in the inspector.");
+                Debug.LogWarning("[DigitalHumanAvatarView] No avatar prefab found.");
                 return;
             }
 
@@ -111,12 +109,31 @@ namespace DeepSeek.DigitalHuman
             modelRoot.localRotation = Quaternion.Euler(externalAvatarLocalEuler);
             modelRoot.localScale = Vector3.one * externalAvatarScale;
 
-            // 获取Animator但不禁用 - 让模型自带动画（如有）正常工作
-            Animator externalAnimator = avatarInstance.GetComponentInChildren<Animator>();
-            if (externalAnimator != null)
+            avatarAnimator = avatarInstance.GetComponentInChildren<Animator>();
+            if (avatarAnimator != null)
             {
-                externalAnimator.applyRootMotion = false;
-                externalAnimator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+                avatarAnimator.applyRootMotion = false;
+                avatarAnimator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+
+                if (avatarAnimator.runtimeAnimatorController == null)
+                {
+                    var controller = Resources.Load<RuntimeAnimatorController>(
+                        "DigitalHuman/AvatarController");
+                    if (controller != null)
+                    {
+                        avatarAnimator.runtimeAnimatorController = controller;
+                    }
+                    else
+                    {
+                        Debug.LogWarning(
+                            "[DigitalHumanAvatarView] AvatarController.controller not found. " +
+                            "Run DeepSeek > Setup Mixamo Animations in Unity Editor.");
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[DigitalHumanAvatarView] No Animator found on avatar model.");
             }
         }
 
@@ -128,7 +145,6 @@ namespace DeepSeek.DigitalHuman
             };
             renderTexture.Create();
 
-            // 相机从正面拍摄模型，完整显示在viewport中
             GameObject cameraObject = new GameObject("AvatarCamera");
             cameraObject.transform.SetParent(sceneRoot, false);
             cameraObject.transform.localPosition = new Vector3(0f, 102f, 11f);
@@ -141,7 +157,6 @@ namespace DeepSeek.DigitalHuman
             avatarCamera.nearClipPlane = 0.05f;
             avatarCamera.farClipPlane = 200f;
 
-            // 主方向光
             GameObject keyLight = new GameObject("AvatarKeyLight");
             keyLight.transform.SetParent(sceneRoot, false);
             keyLight.transform.localPosition = new Vector3(-1.2f, 2.7f, -1.8f);
@@ -150,7 +165,6 @@ namespace DeepSeek.DigitalHuman
             light.type = LightType.Directional;
             light.intensity = 1.18f;
 
-            // 补光
             GameObject fillLight = new GameObject("AvatarFillLight");
             fillLight.transform.SetParent(sceneRoot, false);
             fillLight.transform.localPosition = new Vector3(1.35f, 1.45f, -1.2f);
@@ -171,18 +185,35 @@ namespace DeepSeek.DigitalHuman
 
         public void ApplyPose(DigitalHumanAvatarPose pose, DigitalHumanEmotion emotion)
         {
-            // 姿态动画接口 - 保留供GameController调用
-            // Animator驱动的动画不需要此处的姿态代码
+            if (avatarAnimator == null) return;
+
+            string triggerName = MapPoseToTrigger(pose);
+            if (!string.IsNullOrEmpty(triggerName))
+            {
+                avatarAnimator.SetTrigger(triggerName);
+            }
         }
 
         public void SetAnimationSpeed(float speed)
         {
-            // 动画速度接口 - 保留供GameController调用
+            if (avatarAnimator != null)
+            {
+                avatarAnimator.speed = speed;
+            }
         }
 
         public void PlayInteractiveGreeting()
         {
-            // 交互问候接口 - 保留供GameController调用
+            if (avatarAnimator != null)
+            {
+                avatarAnimator.SetTrigger("Greeting");
+            }
+        }
+
+        private static string MapPoseToTrigger(DigitalHumanAvatarPose pose)
+        {
+            // Pose enum values map directly to Animator Trigger parameters
+            return pose.ToString();
         }
     }
 }

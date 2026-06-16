@@ -42,6 +42,11 @@ namespace DeepSeek.DigitalHuman
                 difficulty);
 
             DigitalHumanEventBus.PublishModuleChanged(DigitalHumanModule.ActionImitation);
+            DigitalHumanEventBus.PublishResponse(DigitalHumanResponse.Say(
+                DigitalHumanModule.ActionImitation,
+                "准备好动作模仿了吗？跟我一起来！",
+                DigitalHumanAvatarPose.Greeting,
+                DigitalHumanEmotion.Friendly));
             SetSlowMode(difficulty == DigitalHumanDifficulty.Beginner);
             NextStep();
         }
