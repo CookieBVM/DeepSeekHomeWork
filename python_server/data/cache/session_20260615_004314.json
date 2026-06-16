@@ -1,0 +1,209 @@
+{
+  "session_id": "session_20260615_004314",
+  "events": [
+    {
+      "event_id": "evt_1781455405347_0",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-15T00:43:21.2302669+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781455405.3474917,
+      "session_id": "session_20260615_004314",
+      "context": "system",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455405355_1",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "65aa234ad53c40bfb0f55f80206017c7",
+        "total_interactions": 0,
+        "correct": 0,
+        "wrong": 0,
+        "accuracy": 0.0,
+        "max_consecutive_correct": 0,
+        "completed_tasks": 0,
+        "total_duration_seconds": 10.9086266
+      },
+      "timestamp": 1781455405.3557634,
+      "session_id": "session_20260615_004314",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455408460_2",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "898f92e425cb464ca765e2dcf098d44d",
+        "module": "亲子涂色",
+        "scenario": "cooperative_coloring",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781455408.4606144,
+      "session_id": "session_20260615_004314",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455408474_3",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "898f92e425cb464ca765e2dcf098d44d",
+        "total_interactions": 0,
+        "correct": 0,
+        "wrong": 0,
+        "accuracy": 0.0,
+        "max_consecutive_correct": 0,
+        "completed_tasks": 0,
+        "total_duration_seconds": 3.101449
+      },
+      "timestamp": 1781455408.4743555,
+      "session_id": "session_20260615_004314",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455412493_4",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "8c536614bbb94260ae5623d6a9e0c00d",
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781455412.4935386,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455413516_5",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "wave",
+        "response": "模仿得很好！",
+        "is_correct": true,
+        "elapsed_seconds": 4.02281475,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781455413.516672,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781455413526_6",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 4.02282429
+      },
+      "timestamp": 1781455413.5267298,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455413527_7",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "clap",
+        "response": "模仿得很好！",
+        "is_correct": true,
+        "elapsed_seconds": 5.051964,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781455413.5277348,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781455415707_8",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 5.05196428
+      },
+      "timestamp": 1781455415.7079155,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781455419134_9",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "8c536614bbb94260ae5623d6a9e0c00d",
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "total_duration_seconds": 7.23769426
+      },
+      "timestamp": 1781455419.134056,
+      "session_id": "session_20260615_004314",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260615_004314",
+    "start_time": 1781455394.503728,
+    "end_time": null,
+    "total_events": 10,
+    "correct_events": 2,
+    "wrong_events": 0,
+    "consecutive_correct": 2,
+    "max_consecutive_correct": 2,
+    "total_duration": 24.63032817840576,
+    "scene_stats": {
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      },
+      "vegetable_market": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      },
+      "cooperative_coloring": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 2
+      },
+      "simple_action_imitation": {
+        "correct": 2,
+        "wrong": 0,
+        "total": 6
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781455419.134056
+}

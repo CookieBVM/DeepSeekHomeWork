@@ -1,0 +1,62 @@
+{
+  "session_id": "session_20260615_183317",
+  "events": [
+    {
+      "event_id": "evt_1781519602760_0",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "apple",
+        "response": "给你苹果！",
+        "is_correct": true,
+        "elapsed_seconds": 5.08561134,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781519602.7600894,
+      "session_id": "session_20260615_183317",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781519694138_1",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 5.08561754
+      },
+      "timestamp": 1781519694.1382482,
+      "session_id": "session_20260615_183317",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260615_183317",
+    "start_time": 1781519597.7135267,
+    "end_time": null,
+    "total_events": 2,
+    "correct_events": 1,
+    "wrong_events": 0,
+    "consecutive_correct": 1,
+    "max_consecutive_correct": 1,
+    "total_duration": 96.4247214794159,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 1,
+        "wrong": 0,
+        "total": 2
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781519694.1392515
+}

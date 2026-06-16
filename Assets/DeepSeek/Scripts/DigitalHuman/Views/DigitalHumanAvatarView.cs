@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 namespace DeepSeek.DigitalHuman
 {
-    /// <summary>
-    /// 数字人形象视图 - 通过Animator Controller的Trigger参数驱动动画
-    /// 使用model分支的Humanoid + AvatarController策略
-    /// </summary>
     public class DigitalHumanAvatarView : MonoBehaviour
     {
         [Header("渲染")]
@@ -27,6 +23,8 @@ namespace DeepSeek.DigitalHuman
         private Transform sceneRoot;
         private Transform modelRoot;
         private Animator avatarAnimator;
+        private Coroutine returnToIdleRoutine;
+        private static readonly int IdleStateHash = Animator.StringToHash("Idle");
 
         private void Awake()
         {
@@ -126,14 +124,10 @@ namespace DeepSeek.DigitalHuman
                     else
                     {
                         Debug.LogWarning(
-                            "[DigitalHumanAvatarView] AvatarController.controller not found. " +
+                            "[DigitalHumanAvatarView] AvatarController not found. " +
                             "Run DeepSeek > Setup Mixamo Animations in Unity Editor.");
                     }
                 }
-            }
-            else
-            {
-                Debug.LogWarning("[DigitalHumanAvatarView] No Animator found on avatar model.");
             }
         }
 
@@ -152,26 +146,26 @@ namespace DeepSeek.DigitalHuman
             avatarCamera = cameraObject.AddComponent<Camera>();
             avatarCamera.targetTexture = renderTexture;
             avatarCamera.clearFlags = CameraClearFlags.SolidColor;
-            avatarCamera.backgroundColor = new Color32(230, 240, 252, 255);
+            avatarCamera.backgroundColor = new Color32(190, 200, 218, 255);
             avatarCamera.fieldOfView = 60f;
             avatarCamera.nearClipPlane = 0.05f;
-            avatarCamera.farClipPlane = 200f;
+            avatarCamera.farClipPlane = 400f;
 
             GameObject keyLight = new GameObject("AvatarKeyLight");
             keyLight.transform.SetParent(sceneRoot, false);
-            keyLight.transform.localPosition = new Vector3(-1.2f, 2.7f, -1.8f);
-            keyLight.transform.localRotation = Quaternion.Euler(44f, 28f, 0f);
+            keyLight.transform.localPosition = new Vector3(-2f, 2.5f, 0f);
+            keyLight.transform.localRotation = Quaternion.Euler(45f, 75f, 0f);
             Light light = keyLight.AddComponent<Light>();
             light.type = LightType.Directional;
-            light.intensity = 1.18f;
+            light.intensity = 0.55f;
 
             GameObject fillLight = new GameObject("AvatarFillLight");
             fillLight.transform.SetParent(sceneRoot, false);
-            fillLight.transform.localPosition = new Vector3(1.35f, 1.45f, -1.2f);
+            fillLight.transform.localPosition = new Vector3(1.8f, 1f, 0.5f);
             Light fill = fillLight.AddComponent<Light>();
             fill.type = LightType.Point;
-            fill.range = 4f;
-            fill.intensity = 0.7f;
+            fill.range = 2.5f;
+            fill.intensity = 0.25f;
         }
 
         public void BindViewport(RawImage targetViewport)
@@ -188,10 +182,21 @@ namespace DeepSeek.DigitalHuman
             if (avatarAnimator == null) return;
 
             string triggerName = MapPoseToTrigger(pose);
-            if (!string.IsNullOrEmpty(triggerName))
+            if (string.IsNullOrEmpty(triggerName))
             {
-                avatarAnimator.SetTrigger(triggerName);
+                avatarAnimator.Play(IdleStateHash, 0, 0f);
+                return;
             }
+
+            avatarAnimator.ResetTrigger(triggerName);
+            avatarAnimator.SetTrigger(triggerName);
+
+            if (returnToIdleRoutine != null)
+            {
+                StopCoroutine(returnToIdleRoutine);
+            }
+
+            returnToIdleRoutine = StartCoroutine(ReturnToIdleAfterClip(triggerName));
         }
 
         public void SetAnimationSpeed(float speed)
@@ -207,12 +212,47 @@ namespace DeepSeek.DigitalHuman
             if (avatarAnimator != null)
             {
                 avatarAnimator.SetTrigger("Greeting");
+
+                if (returnToIdleRoutine != null)
+                {
+                    StopCoroutine(returnToIdleRoutine);
+                }
+
+                returnToIdleRoutine = StartCoroutine(ReturnToIdleAfterClip("Greeting"));
             }
+        }
+
+        private IEnumerator ReturnToIdleAfterClip(string triggerName)
+        {
+            yield return null;
+
+            var stateInfo = avatarAnimator.GetCurrentAnimatorStateInfo(0);
+            float clipLength = stateInfo.length;
+
+            if (triggerName == "Greeting")
+            {
+                clipLength *= 2.5f;
+            }
+
+            if (clipLength > 0.05f)
+            {
+                yield return new WaitForSeconds(clipLength);
+            }
+            else
+            {
+                yield return new WaitForSeconds(2f);
+            }
+
+            avatarAnimator.Play(IdleStateHash, 0, 0f);
+            returnToIdleRoutine = null;
         }
 
         private static string MapPoseToTrigger(DigitalHumanAvatarPose pose)
         {
-            // Pose enum values map directly to Animator Trigger parameters
+            // Idle: no trigger, handled directly
+            if (pose == DigitalHumanAvatarPose.Idle)
+                return null;
+
             return pose.ToString();
         }
     }

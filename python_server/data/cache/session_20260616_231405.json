@@ -1,0 +1,63 @@
+{
+  "session_id": "session_20260616_231405",
+  "events": [
+    {
+      "event_id": "evt_1781622865531_0",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-16T23:14:10.1630551+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781622865.5312657,
+      "session_id": "session_20260616_231405",
+      "context": "system",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781622865540_1",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "hello",
+        "response": "你好呀！你可以告诉我想买什么。",
+        "is_correct": true,
+        "elapsed_seconds": 20.5775967,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781622865.5402865,
+      "session_id": "session_20260616_231405",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260616_231405",
+    "start_time": 1781622845.03427,
+    "end_time": null,
+    "total_events": 2,
+    "correct_events": 1,
+    "wrong_events": 0,
+    "consecutive_correct": 1,
+    "max_consecutive_correct": 1,
+    "total_duration": 20.506016492843628,
+    "scene_stats": {
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      },
+      "vegetable_market": {
+        "correct": 1,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781622865.5402865
+}

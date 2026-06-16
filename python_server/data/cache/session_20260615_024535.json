@@ -1,0 +1,80 @@
+{
+  "session_id": "session_20260615_024535",
+  "events": [
+    {
+      "event_id": "evt_1781462739969_0",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "apple",
+        "response": "给你苹果！",
+        "is_correct": true,
+        "elapsed_seconds": 4.276252,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781462739.9695616,
+      "session_id": "session_20260615_024535",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781462741392_1",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 4.276257
+      },
+      "timestamp": 1781462741.392995,
+      "session_id": "session_20260615_024535",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781463322275_2",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-15T02:45:41.3868330+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781463322.2751367,
+      "session_id": "session_20260615_024535",
+      "context": "system",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260615_024535",
+    "start_time": 1781462735.7409678,
+    "end_time": null,
+    "total_events": 3,
+    "correct_events": 1,
+    "wrong_events": 0,
+    "consecutive_correct": 1,
+    "max_consecutive_correct": 1,
+    "total_duration": 586.5341689586639,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 1,
+        "wrong": 0,
+        "total": 2
+      },
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781463322.2751367
+}

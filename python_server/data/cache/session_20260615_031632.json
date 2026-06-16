@@ -1,0 +1,323 @@
+{
+  "session_id": "session_20260615_031632",
+  "events": [
+    {
+      "event_id": "evt_1781464599097_0",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-15T03:16:36.6891037+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781464599.097636,
+      "session_id": "session_20260615_031632",
+      "context": "system",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464599110_1",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "apple",
+        "response": "给你苹果！",
+        "is_correct": true,
+        "elapsed_seconds": 7.09160376,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781464599.110204,
+      "session_id": "session_20260615_031632",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464599646_2",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 7.091609
+      },
+      "timestamp": 1781464599.6467123,
+      "session_id": "session_20260615_031632",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464599650_3",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "finish",
+        "response": "完成啦，你们太厉害啦！",
+        "is_correct": true,
+        "elapsed_seconds": 7.64147472,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781464599.6502383,
+      "session_id": "session_20260615_031632",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464605980_4",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 7.641475
+      },
+      "timestamp": 1781464605.9801545,
+      "session_id": "session_20260615_031632",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464609659_5",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "fa514020ee0a434fb81ef2fc46500486",
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 1,
+        "total_duration_seconds": 7.64816475
+      },
+      "timestamp": 1781464609.659094,
+      "session_id": "session_20260615_031632",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464609675_6",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "162d9e0c69d14e578fea33c7d603e564",
+        "module": "亲子涂色",
+        "scenario": "cooperative_coloring",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781464609.675726,
+      "session_id": "session_20260615_031632",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464609687_7",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "162d9e0c69d14e578fea33c7d603e564",
+        "total_interactions": 0,
+        "correct": 0,
+        "wrong": 0,
+        "accuracy": 0.0,
+        "max_consecutive_correct": 0,
+        "completed_tasks": 0,
+        "total_duration_seconds": 3.6710217
+      },
+      "timestamp": 1781464609.6873825,
+      "session_id": "session_20260615_031632",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464613949_8",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "bcb7ba0694a04f48b44428434a2c3a20",
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781464613.9491339,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464613960_9",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "wave",
+        "response": "模仿得很好！",
+        "is_correct": true,
+        "elapsed_seconds": 2.47862053,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781464613.9607794,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464614397_10",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "clap",
+        "response": "模仿得很好！",
+        "is_correct": true,
+        "elapsed_seconds": 4.28647661,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781464614.3975146,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464614406_11",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "nod",
+        "response": "模仿得很好！",
+        "is_correct": true,
+        "elapsed_seconds": 4.734138,
+        "consecutive_correct": 3,
+        "max_consecutive_correct": 3
+      },
+      "timestamp": 1781464614.4065745,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464614416_12",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 3,
+        "correct": 3,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 3,
+        "completed_tasks": 0,
+        "duration_seconds": 4.73413849
+      },
+      "timestamp": 1781464614.416711,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464614419_13",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "participant": "系统",
+        "input_mode": "选项选择",
+        "input": "imitation_complete",
+        "response": "动作模仿完成啦，你们太厉害啦！",
+        "is_correct": true,
+        "elapsed_seconds": 4.741913,
+        "consecutive_correct": 4,
+        "max_consecutive_correct": 4
+      },
+      "timestamp": 1781464614.41923,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781464614431_14",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 4,
+        "correct": 4,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 4,
+        "completed_tasks": 1,
+        "duration_seconds": 4.74191332
+      },
+      "timestamp": 1781464614.4318335,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781464618874_15",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "bcb7ba0694a04f48b44428434a2c3a20",
+        "total_interactions": 4,
+        "correct": 4,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 4,
+        "completed_tasks": 1,
+        "total_duration_seconds": 4.74937344
+      },
+      "timestamp": 1781464618.8743882,
+      "session_id": "session_20260615_031632",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260615_031632",
+    "start_time": 1781464592.0562048,
+    "end_time": null,
+    "total_events": 16,
+    "correct_events": 6,
+    "wrong_events": 0,
+    "consecutive_correct": 6,
+    "max_consecutive_correct": 6,
+    "total_duration": 26.818183422088623,
+    "scene_stats": {
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      },
+      "vegetable_market": {
+        "correct": 2,
+        "wrong": 0,
+        "total": 5
+      },
+      "cooperative_coloring": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 2
+      },
+      "simple_action_imitation": {
+        "correct": 4,
+        "wrong": 0,
+        "total": 8
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781464618.8753877
+}

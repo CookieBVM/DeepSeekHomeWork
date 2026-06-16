@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="Assets\DeepSeek\Editor\SetupAvatarScene.cs" />
     <Compile Include="Assets\Editor\DigitalHumanSampleSceneBuilder.cs" />
+    <Compile Include="Assets\DeepSeek\Editor\MixamoAvatarPostprocessor.cs" />
+    <Compile Include="Assets\DeepSeek\Editor\MixamoAnimationSetup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -1,0 +1,38 @@
+{
+  "session_id": "session_20260615_014712",
+  "events": [
+    {
+      "event_id": "evt_1781459712026_0",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-15T01:47:18.2770392+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781459712.026326,
+      "session_id": "session_20260615_014712",
+      "context": "system",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260615_014712",
+    "start_time": 1781459232.510341,
+    "end_time": null,
+    "total_events": 1,
+    "correct_events": 0,
+    "wrong_events": 0,
+    "consecutive_correct": 0,
+    "max_consecutive_correct": 0,
+    "total_duration": 479.51598501205444,
+    "scene_stats": {
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 0.0
+  },
+  "last_updated": 1781459712.026326
+}
