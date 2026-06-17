@@ -1,0 +1,223 @@
+{
+  "session_id": "session_20260617_233155",
+  "events": [
+    {
+      "event_id": "evt_1781710327879_0",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "apple",
+        "response": "给你苹果！",
+        "is_correct": true,
+        "elapsed_seconds": 12.5694132,
+        "consecutive_correct": 1,
+        "max_consecutive_correct": 1
+      },
+      "timestamp": 1781710327.8793287,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781710329439_1",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 1,
+        "correct": 1,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 1,
+        "completed_tasks": 0,
+        "duration_seconds": 12.569418
+      },
+      "timestamp": 1781710329.4391367,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710330052_2",
+      "event_type": "unity_startup_test",
+      "data": {
+        "test": true,
+        "timestamp": "2026-06-17T23:32:09.4336133+08:00",
+        "source": "Unity_DigitalHumanStatsLogger"
+      },
+      "timestamp": 1781710330.0521235,
+      "session_id": "session_20260617_233155",
+      "context": "system",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710330057_3",
+      "event_type": "interaction_recorded",
+      "data": {
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "participant": "孩子",
+        "input_mode": "选项选择",
+        "input": "finish",
+        "response": "完成啦，你们太厉害啦！",
+        "is_correct": true,
+        "elapsed_seconds": 14.7486925,
+        "consecutive_correct": 2,
+        "max_consecutive_correct": 2
+      },
+      "timestamp": 1781710330.0571518,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "correct"
+    },
+    {
+      "event_id": "evt_1781710341471_4",
+      "event_type": "stats_updated",
+      "data": {
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 0,
+        "duration_seconds": 14.7486925
+      },
+      "timestamp": 1781710341.471721,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710344596_5",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "1846693c289344e5a071370ea77c7ed5",
+        "total_interactions": 2,
+        "correct": 2,
+        "wrong": 0,
+        "accuracy": 1.0,
+        "max_consecutive_correct": 2,
+        "completed_tasks": 1,
+        "total_duration_seconds": 14.7545691
+      },
+      "timestamp": 1781710344.5962033,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710344608_6",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "2893ae854f9b4ac38dd0b56bb15d7aaf",
+        "module": "人际交流(买菜)",
+        "scenario": "vegetable_market",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781710344.608811,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710344616_7",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "2893ae854f9b4ac38dd0b56bb15d7aaf",
+        "total_interactions": 0,
+        "correct": 0,
+        "wrong": 0,
+        "accuracy": 0.0,
+        "max_consecutive_correct": 0,
+        "completed_tasks": 0,
+        "total_duration_seconds": 3.1154952
+      },
+      "timestamp": 1781710344.616326,
+      "session_id": "session_20260617_233155",
+      "context": "vegetable_market",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710349773_8",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "792e1046420742e29cb0dddbd0c1eeb0",
+        "module": "亲子涂色",
+        "scenario": "cooperative_coloring",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781710349.7738304,
+      "session_id": "session_20260617_233155",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710349786_9",
+      "event_type": "session_ended",
+      "data": {
+        "session_id": "792e1046420742e29cb0dddbd0c1eeb0",
+        "total_interactions": 0,
+        "correct": 0,
+        "wrong": 0,
+        "accuracy": 0.0,
+        "max_consecutive_correct": 0,
+        "completed_tasks": 0,
+        "total_duration_seconds": 5.162131
+      },
+      "timestamp": 1781710349.7863798,
+      "session_id": "session_20260617_233155",
+      "context": "cooperative_coloring",
+      "correctness": "unknown"
+    },
+    {
+      "event_id": "evt_1781710355342_10",
+      "event_type": "session_started",
+      "data": {
+        "session_id": "c16a8d9bb882472ba9af265d90901d2f",
+        "module": "动作模仿",
+        "scenario": "simple_action_imitation",
+        "difficulty": "初级"
+      },
+      "timestamp": 1781710355.342098,
+      "session_id": "session_20260617_233155",
+      "context": "simple_action_imitation",
+      "correctness": "unknown"
+    }
+  ],
+  "stats": {
+    "session_id": "session_20260617_233155",
+    "start_time": 1781710315.775757,
+    "end_time": null,
+    "total_events": 11,
+    "correct_events": 2,
+    "wrong_events": 0,
+    "consecutive_correct": 2,
+    "max_consecutive_correct": 2,
+    "total_duration": 39.566340923309326,
+    "scene_stats": {
+      "vegetable_market": {
+        "correct": 2,
+        "wrong": 0,
+        "total": 7
+      },
+      "system": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      },
+      "cooperative_coloring": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 2
+      },
+      "simple_action_imitation": {
+        "correct": 0,
+        "wrong": 0,
+        "total": 1
+      }
+    },
+    "accuracy": 1.0
+  },
+  "last_updated": 1781710355.342098
+}
